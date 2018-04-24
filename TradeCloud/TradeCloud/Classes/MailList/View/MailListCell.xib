@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CELL" rowHeight="53" id="KGk-i7-Jjw" customClass="MailListCell">
+            <rect key="frame" x="0.0" y="0.0" width="411" height="53"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="411" height="52.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_img" translatesAutoresizingMaskIntoConstraints="NO" id="PIA-mX-S1v">
+                        <rect key="frame" x="20" y="11" width="31" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="PIA-mX-S1v" secondAttribute="height" multiplier="1:1" id="TY2-Ha-m74"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18206387263" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEg-5L-VxJ">
+                        <rect key="frame" x="291" y="18" width="100" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Ce5-La-mtz"/>
+                            <constraint firstAttribute="height" constant="18" id="ZTd-vC-7Dd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="哆啦A梦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jG-vc-cEK">
+                        <rect key="frame" x="59" y="16" width="173" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="GWF-Mm-8PF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dEg-5L-VxJ" firstAttribute="leading" secondItem="6jG-vc-cEK" secondAttribute="trailing" constant="59" id="ENw-kK-AYj"/>
+                    <constraint firstItem="6jG-vc-cEK" firstAttribute="leading" secondItem="PIA-mX-S1v" secondAttribute="trailing" constant="8" id="Gb2-IV-feH"/>
+                    <constraint firstItem="dEg-5L-VxJ" firstAttribute="centerY" secondItem="PIA-mX-S1v" secondAttribute="centerY" id="Qnq-3J-sAX"/>
+                    <constraint firstItem="PIA-mX-S1v" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="RFM-Jb-uZc"/>
+                    <constraint firstItem="PIA-mX-S1v" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="Zv1-RG-BnV"/>
+                    <constraint firstItem="6jG-vc-cEK" firstAttribute="centerY" secondItem="PIA-mX-S1v" secondAttribute="centerY" id="ay9-yD-ElM"/>
+                    <constraint firstItem="dEg-5L-VxJ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="i0y-4K-2Vf"/>
+                    <constraint firstItem="PIA-mX-S1v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="iP5-gL-oBL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <point key="canvasLocation" x="77.5" y="117.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add_img" width="180" height="174"/>
+    </resources>
+</document>

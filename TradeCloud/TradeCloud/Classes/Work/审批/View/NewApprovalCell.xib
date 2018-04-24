@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CELL" id="gTV-IL-0wX" customClass="NewApprovalCell">
+            <rect key="frame" x="0.0" y="0.0" width="136" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="136" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newapp_bg" translatesAutoresizingMaskIntoConstraints="NO" id="GCu-l5-T7M">
+                        <rect key="frame" x="0.0" y="0.0" width="136" height="150"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_img" translatesAutoresizingMaskIntoConstraints="NO" id="raY-X3-mhd">
+                        <rect key="frame" x="35.5" y="20" width="65" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="65" id="G7P-xO-qjh"/>
+                            <constraint firstAttribute="width" constant="65" id="il6-VB-asQ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请假" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUH-Z6-cbw">
+                        <rect key="frame" x="35" y="93" width="66" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="66" id="sOX-ch-TbO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="GCu-l5-T7M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Jjf-Ic-Q3O"/>
+                <constraint firstItem="hUH-Z6-cbw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Vbg-w4-hkk"/>
+                <constraint firstItem="raY-X3-mhd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="eiH-bY-Waz"/>
+                <constraint firstItem="GCu-l5-T7M" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gTB-62-ujb"/>
+                <constraint firstAttribute="bottom" secondItem="GCu-l5-T7M" secondAttribute="bottom" id="jJj-Ec-Fl8"/>
+                <constraint firstItem="raY-X3-mhd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="jyn-K1-f0f"/>
+                <constraint firstAttribute="trailing" secondItem="GCu-l5-T7M" secondAttribute="trailing" id="rVI-dK-E1H"/>
+                <constraint firstItem="hUH-Z6-cbw" firstAttribute="top" secondItem="raY-X3-mhd" secondAttribute="bottom" constant="8" id="wqR-zG-07R"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="130" height="130"/>
+            <connections>
+                <outlet property="im" destination="raY-X3-mhd" id="kuJ-5E-dX2"/>
+                <outlet property="la" destination="hUH-Z6-cbw" id="3G0-pv-9hL"/>
+            </connections>
+            <point key="canvasLocation" x="65" y="12"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="add_img" width="180" height="174"/>
+        <image name="newapp_bg" width="150" height="150"/>
+    </resources>
+</document>

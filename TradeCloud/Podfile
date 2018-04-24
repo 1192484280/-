@@ -1,0 +1,33 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'TradeCloud' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for TradeCloud
+
+pod 'SDWebImage'
+pod 'MJRefresh'
+pod 'Masonry'
+
+#刷新频率需要
+pod 'YYText'
+pod 'YYCategories'
+
+#键盘管理
+pod 'IQKeyboardManager'
+
+pod 'AFNetworking', '~> 3.0'
+pod 'SVProgressHUD'
+
+#图片多选
+pod 'TZImagePickerController'
+
+#下拉日历
+pod 'FSCalendar'
+
+#百度地图SDK
+pod 'BaiduMapKit'
+
+end

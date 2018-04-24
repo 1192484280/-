@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageNotificationViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   接收新消息通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AJ-5m-ZFt">
+                    <rect key="frame" x="0.0" y="50" width="306" height="40"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="cxd-C0-bP4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已关闭" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOE-Oj-xQQ">
+                    <rect key="frame" x="306" y="50" width="69" height="40"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="69" id="OxS-s9-gZA"/>
+                        <constraint firstAttribute="height" constant="40" id="RSP-iC-FCI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请前往设备的设置-&gt;通知中心-&gt;贸易云，打开消息通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3x-2C-0zU">
+                    <rect key="frame" x="16" y="100" width="343" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Qwq-7r-04J"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAI-61-kxT">
+                    <rect key="frame" x="62.5" y="156" width="250" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="Km9-KM-MbH"/>
+                        <constraint firstAttribute="height" constant="40" id="c6T-Bl-v8M"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="前往开启消息通知" backgroundImage="btn_bg">
+                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.92532819509506226" green="0.9251784086227417" blue="0.9457811713218689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9AJ-5m-ZFt" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="0Rh-zT-gi0"/>
+                <constraint firstItem="mAI-61-kxT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Bhu-So-1oZ"/>
+                <constraint firstItem="w3x-2C-0zU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="QYR-pN-qHx"/>
+                <constraint firstItem="XOE-Oj-xQQ" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="QvP-ff-qSs"/>
+                <constraint firstItem="9AJ-5m-ZFt" firstAttribute="centerY" secondItem="XOE-Oj-xQQ" secondAttribute="centerY" id="V6b-NH-b5b"/>
+                <constraint firstItem="mAI-61-kxT" firstAttribute="top" secondItem="w3x-2C-0zU" secondAttribute="bottom" constant="35" id="aPW-bR-dn6"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="w3x-2C-0zU" secondAttribute="trailing" constant="16" id="dPO-CU-WYD"/>
+                <constraint firstItem="XOE-Oj-xQQ" firstAttribute="leading" secondItem="9AJ-5m-ZFt" secondAttribute="trailing" id="eRB-ht-wch"/>
+                <constraint firstItem="w3x-2C-0zU" firstAttribute="top" secondItem="9AJ-5m-ZFt" secondAttribute="bottom" constant="10" id="iTW-3H-w4l"/>
+                <constraint firstItem="XOE-Oj-xQQ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="30" id="yfT-AL-S7j"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="110.5" y="-1.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_bg" width="375" height="88"/>
+    </resources>
+</document>
