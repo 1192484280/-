@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NameViewController">
             <connections>
-                <outlet property="titleLa" destination="J9v-zv-l5T" id="0Ij-7m-hUR"/>
+                <outlet property="nameTf" destination="62V-NS-SMr" id="iAf-yC-qoL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,19 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wF-qY-mh6">
-                    <rect key="frame" x="0.0" y="45" width="375" height="47"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="47"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9v-zv-l5T">
-                            <rect key="frame" x="15" y="13" width="35" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="HDG-e0-Od1"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="王先生" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="62V-NS-SMr">
-                            <rect key="frame" x="79" y="0.0" width="237" height="47"/>
+                            <rect key="frame" x="20" y="0.0" width="296" height="47"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -43,11 +34,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="62V-NS-SMr" secondAttribute="trailing" constant="59" id="2Gm-y5-oTv"/>
-                        <constraint firstItem="J9v-zv-l5T" firstAttribute="centerY" secondItem="8wF-qY-mh6" secondAttribute="centerY" id="ZLw-wY-emH"/>
                         <constraint firstItem="62V-NS-SMr" firstAttribute="top" secondItem="8wF-qY-mh6" secondAttribute="top" id="aSB-ex-bRv"/>
-                        <constraint firstItem="62V-NS-SMr" firstAttribute="leading" secondItem="J9v-zv-l5T" secondAttribute="trailing" constant="29" id="hAN-rR-5RA"/>
-                        <constraint firstItem="J9v-zv-l5T" firstAttribute="leading" secondItem="8wF-qY-mh6" secondAttribute="leading" constant="15" id="mkU-2x-wiJ"/>
                         <constraint firstAttribute="bottom" secondItem="62V-NS-SMr" secondAttribute="bottom" id="nlp-Zb-adP"/>
+                        <constraint firstItem="62V-NS-SMr" firstAttribute="leading" secondItem="8wF-qY-mh6" secondAttribute="leading" constant="20" id="rex-vb-2fY"/>
                         <constraint firstAttribute="height" constant="47" id="xhM-JV-8OV"/>
                     </constraints>
                 </view>
@@ -56,7 +45,7 @@
             <constraints>
                 <constraint firstItem="8wF-qY-mh6" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Aar-by-M7Z"/>
                 <constraint firstItem="8wF-qY-mh6" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="Toh-f5-Y7p"/>
-                <constraint firstItem="8wF-qY-mh6" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="25" id="eqx-SC-4lQ"/>
+                <constraint firstItem="8wF-qY-mh6" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="eqx-SC-4lQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="69.5" y="59.5"/>

@@ -20,6 +20,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8I-rL-KFo">
+                    <rect key="frame" x="0.0" y="36" width="375" height="350"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="350" id="4PQ-tO-dcW"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入新手机号码:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anS-E6-mha">
                     <rect key="frame" x="16" y="70" width="164" height="21"/>
                     <constraints>
@@ -130,10 +137,13 @@
                 <constraint firstItem="GK0-l9-QTd" firstAttribute="centerY" secondItem="5C1-4Y-S3G" secondAttribute="centerY" id="5MU-tj-QZV"/>
                 <constraint firstItem="5C1-4Y-S3G" firstAttribute="top" secondItem="Ygv-6W-wQX" secondAttribute="bottom" constant="15" id="6Yg-k6-OvR"/>
                 <constraint firstItem="o99-Om-Ipb" firstAttribute="top" secondItem="Qqb-jK-qvN" secondAttribute="bottom" id="71a-yy-AIe"/>
+                <constraint firstItem="O8I-rL-KFo" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="M1g-fM-qAk"/>
                 <constraint firstItem="Qqb-jK-qvN" firstAttribute="top" secondItem="anS-E6-mha" secondAttribute="bottom" constant="15" id="Mls-hV-lER"/>
                 <constraint firstItem="482-Jc-xsq" firstAttribute="top" secondItem="I3O-0C-APS" secondAttribute="bottom" constant="35" id="Mwk-uB-Jwh"/>
+                <constraint firstItem="O8I-rL-KFo" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="16" id="NeF-1V-WTe"/>
                 <constraint firstItem="Ym4-MM-D9y" firstAttribute="centerY" secondItem="5C1-4Y-S3G" secondAttribute="centerY" id="OKP-0F-xSO"/>
                 <constraint firstItem="anS-E6-mha" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="50" id="S6F-Yx-zmk"/>
+                <constraint firstItem="O8I-rL-KFo" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="YeO-SP-ocW"/>
                 <constraint firstItem="AGo-z8-vc3" firstAttribute="leading" secondItem="o99-Om-Ipb" secondAttribute="trailing" id="c1a-W2-3Qi"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="AGo-z8-vc3" secondAttribute="trailing" constant="16" id="cmu-X4-GC3"/>
                 <constraint firstItem="482-Jc-xsq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fII-KG-Dja"/>
@@ -150,7 +160,7 @@
                 <constraint firstItem="Qqb-jK-qvN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="y7C-CN-070"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="-60" y="50"/>
+            <point key="canvasLocation" x="-60.5" y="49.5"/>
         </view>
     </objects>
     <resources>

@@ -103,6 +103,7 @@
 - (SMPagerTabView *)segmentView {
     if (!_segmentView) {
         self.segmentView = [[SMPagerTabView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.searchView.frame), kScreenWidth, kScreenHeight - (iPhoneX_Top))];
+        self.segmentView.theight = 45;
         [self.view addSubview:_segmentView];
     }
     return _segmentView;

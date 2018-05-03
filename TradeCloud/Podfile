@@ -27,7 +27,7 @@ pod 'TZImagePickerController'
 #下拉日历
 pod 'FSCalendar'
 
-#百度地图SDK
+#百度地图
 pod 'BaiduMapKit'
 
 end

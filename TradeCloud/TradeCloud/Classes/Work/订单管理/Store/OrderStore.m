@@ -76,7 +76,7 @@
         if (error == nil) {
             
             BOOL more = YES;
-            NSArray *arr = [OrderModel mj_objectArrayWithKeyValuesArray:responseObject[@"url"]];
+            NSArray *arr = [OrderModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"data"]];
             
             if (!(arr.count > 0)) {
                 

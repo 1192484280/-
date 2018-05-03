@@ -8,6 +8,15 @@
 
 #import "BaseViewController.h"
 
+@protocol WorkClockControllerDelegate<NSObject>
+
+- (void)onWorkPhoto:(UIButton *)btn;
+
+@end
+
 @interface WorkClockController : BaseViewController
+
+@property (weak, nonatomic) id<WorkClockControllerDelegate>delegate;
+
 
 @end

@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WorkHeaderViewDelegate<NSObject>
+
+- (void)photoBtn:(UIButton *)btn;
+
+@end
+
 @interface WorkHeaderView : UIView
+
+@property (weak, nonatomic) id<WorkHeaderViewDelegate>delegate;
+
+@property (strong, nonatomic) NSString *title;
+
+@property (strong, nonatomic) NSString *location;
 
 @end

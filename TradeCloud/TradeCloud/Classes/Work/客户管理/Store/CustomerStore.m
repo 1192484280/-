@@ -33,7 +33,7 @@
         if (error == nil) {
             
             BOOL more = YES;
-            NSArray *arr = [CustomerModel mj_objectArrayWithKeyValuesArray:responseObject[@"url"]];
+            NSArray *arr = [CustomerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"data"]];
             if (!(arr.count > 0)) {
                 
                 more = NO;

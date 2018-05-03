@@ -8,6 +8,16 @@
 
 #import "BaseViewController.h"
 
+@protocol OutClockControllerDelegate<NSObject>
+
+- (void)onWorkPhoto:(UIButton *)btn;
+- (void)onRemark:(UIButton *)btn;
+- (void)onAddres:(UIButton *)btn;
+
+@end
+
 @interface OutClockController : BaseViewController
+
+@property (weak, nonatomic) id<OutClockControllerDelegate>delegate;
 
 @end

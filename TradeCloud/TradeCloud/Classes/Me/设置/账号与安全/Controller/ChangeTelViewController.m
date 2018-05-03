@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor =NormalBgColor;
+    
     [self setNavBarWithTitle:@"更换手机号"];
 }
 - (IBAction)onNextStep:(UIButton *)sender {

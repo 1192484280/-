@@ -141,7 +141,10 @@
     UIViewController *VC = [[[self.vcArr[indexPath.section][indexPath.row] class] alloc] init];
     
     if (indexPath.section < 2) {
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        
+        if (indexPath.row<1) {
+            [self.navigationController setNavigationBarHidden:YES animated:YES];
+        }
     }
     [VC setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:VC animated:YES];

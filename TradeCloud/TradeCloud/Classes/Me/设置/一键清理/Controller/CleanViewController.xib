@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CleanViewController">
             <connections>
-                <outlet property="cacheLa" destination="ALA-ph-dze" id="SzW-Xh-CcT"/>
+                <outlet property="cacheLa" destination="ALA-ph-dze" id="jsf-zI-DkU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -9,6 +9,7 @@
 #import "MyInfoViewController.h"
 #import "MyInfoCell.h"
 #import "NameViewController.h"
+#import "HeaderImViewController.h"
 
 @interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -71,6 +72,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     switch (indexPath.section) {
         case 0:
             
@@ -83,9 +86,13 @@
     }
 }
 
+
+
 - (void)goHeaderImg{
     
-    
+    HeaderImViewController *VC = [[HeaderImViewController alloc] init];
+    VC.img = [UIImage imageNamed:@"add_img"];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (void)goName:(NSString *)title{

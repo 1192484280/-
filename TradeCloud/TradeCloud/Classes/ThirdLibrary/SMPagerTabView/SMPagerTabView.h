@@ -23,6 +23,8 @@
 @property (nonatomic, assign) UIColor* tabButtonTitleColorForSelected;
 @property (nonatomic, assign) CGFloat selectedLineWidth; //下划线的宽
 
+@property (assign, nonatomic) CGFloat theight;
+
 /*!
  * @brief 自定义完毕后开始build UI
  */

@@ -54,9 +54,9 @@
         if (error == nil) {
             
             BOOL more = YES;
-            NSArray *arr = [OrderCostModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
+            NSArray *arr = [OrderCostModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"data"]];
             
-            NSString *total = responseObject[@"data"][@"total_money"];
+            NSString *total = responseObject[@"url"][@"total_money"];
             
             if (!(arr.count > 0)) {
                 

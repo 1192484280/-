@@ -20,6 +20,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eR4-5m-2xS">
+                    <rect key="frame" x="0.0" y="36" width="375" height="352"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="352" id="cQZ-sc-7f0"/>
+                    </constraints>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tel" translatesAutoresizingMaskIntoConstraints="NO" id="vjY-ez-Y72">
                     <rect key="frame" x="154" y="70" width="67" height="109"/>
                     <constraints>
@@ -70,8 +77,11 @@
             <constraints>
                 <constraint firstItem="vjY-ez-Y72" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="47G-GT-w9w"/>
                 <constraint firstItem="TWY-Xp-ER1" firstAttribute="top" secondItem="X3e-A0-Ae1" secondAttribute="bottom" constant="35" id="5se-2p-KIU"/>
+                <constraint firstItem="eR4-5m-2xS" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="NiW-Fu-SXd"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="VC9-fY-GyU" secondAttribute="trailing" constant="16" id="RW8-97-ZS1"/>
                 <constraint firstItem="VC9-fY-GyU" firstAttribute="top" secondItem="TWY-Xp-ER1" secondAttribute="bottom" constant="8" id="TX2-hh-8gB"/>
+                <constraint firstItem="eR4-5m-2xS" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="Wbz-KL-HmR"/>
+                <constraint firstItem="eR4-5m-2xS" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="16" id="b2E-mt-Thf"/>
                 <constraint firstItem="X3e-A0-Ae1" firstAttribute="top" secondItem="vjY-ez-Y72" secondAttribute="bottom" constant="35" id="cgX-k0-idp"/>
                 <constraint firstItem="TWY-Xp-ER1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="feW-k8-gpQ"/>
                 <constraint firstItem="VC9-fY-GyU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="j9E-eh-S9o"/>

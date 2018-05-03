@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol OutHeaderViewDelegate<NSObject>
+
+- (void)photoBtn:(UIButton *)btn;
+- (void)onRemarkBtn:(UIButton *)btn;
+- (void)onAddresBtn:(UIButton *)btn;
+
+@end
+
 @interface OutHeaderView : UIView
+
+@property (weak, nonatomic) id<OutHeaderViewDelegate>delegate;
+
+@property (strong, nonatomic) NSString *location;
 
 @end

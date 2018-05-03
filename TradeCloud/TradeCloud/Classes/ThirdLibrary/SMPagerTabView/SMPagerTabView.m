@@ -255,7 +255,7 @@
 }
 - (CGFloat)tabFrameHeight {
     if (!_tabFrameHeight) {
-        self.tabFrameHeight = 0;
+        self.tabFrameHeight = self.theight;
     }
     return _tabFrameHeight;
 }

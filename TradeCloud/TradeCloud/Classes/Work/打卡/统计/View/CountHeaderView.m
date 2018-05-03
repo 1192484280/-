@@ -11,6 +11,7 @@
 
 @interface CountHeaderView()
 
+@property (strong, nonatomic) RoundView *roundView;
 @property (weak, nonatomic) UIImageView *norIm;
 @property (weak, nonatomic) UIImageView *unnorIm;
 @property (weak, nonatomic) UILabel *norLa;
@@ -30,24 +31,34 @@
     return self;
 }
 
+
+- (RoundView *)roundView{
+    
+    if (!_roundView) {
+        
+        _roundView = [[RoundView alloc] init];
+        _roundView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:_roundView];
+        [_roundView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.left.top.equalTo(self).offset(10);
+            make.right.bottom.equalTo(self).offset(-10);
+        }];
+    }
+    
+    return _roundView;
+}
+
 - (void)setUI{
     
-    RoundView *round = [[RoundView alloc] init];
-    round.backgroundColor = [UIColor whiteColor];
-    [self addSubview:round];
-    [round mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.top.equalTo(self).offset(10);
-        make.right.bottom.equalTo(self).offset(-10);
-    }];
-    
+
     UILabel *titleLa = [[UILabel alloc] init];
     titleLa.text = @"上下班打卡";
     titleLa.font = [UIFont boldSystemFontOfSize:17];
-    [round addSubview:titleLa];
+    [self.roundView addSubview:titleLa];
     [titleLa mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.top.equalTo(round).offset(10);
+        make.left.top.equalTo(self.roundView).offset(10);
         
     }];
     
@@ -57,12 +68,12 @@
     norLa.textColor = [UIColor grayColor];
     norLa.font = [UIFont systemFontOfSize:15];
     norLa.textAlignment = NSTextAlignmentCenter;
-    [round addSubview:norLa];
+    [self.roundView addSubview:norLa];
     [norLa mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(round).offset(120);
+        make.top.equalTo(self.roundView).offset(120);
         make.height.mas_equalTo(20);
-        make.centerX.equalTo(round).offset(10);
+        make.centerX.equalTo(self.roundView).offset(10);
     
     }];
     
@@ -71,20 +82,20 @@
     unnorLa.textColor = [UIColor grayColor];
     unnorLa.font = [UIFont systemFontOfSize:15];
     unnorLa.textAlignment = NSTextAlignmentCenter;
-    [round addSubview:unnorLa];
+    [self.roundView addSubview:unnorLa];
     [unnorLa mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(round).offset(140);
-        make.centerX.equalTo(round).offset(10);
+        make.top.equalTo(self.roundView).offset(140);
+        make.centerX.equalTo(self.roundView).offset(10);
         make.height.mas_equalTo(20);
     }];
 
     UIImageView *norIm = [[UIImageView alloc] init];
     norIm.image = [UIImage imageNamed:@"norIm"];
-    [round addSubview:norIm];
+    [self.roundView addSubview:norIm];
     [norIm mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(round).offset(120);
+        make.top.equalTo(self.roundView).offset(120);
         make.left.equalTo(norLa.mas_left).offset(-20);
         make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
@@ -92,10 +103,10 @@
     
     UIImageView *unnorIm = [[UIImageView alloc] init];
     unnorIm.image = [UIImage imageNamed:@"unnorIm"];
-    [round addSubview:unnorIm];
+    [self.roundView addSubview:unnorIm];
     [unnorIm mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(round).offset(140);
+        make.top.equalTo(self.roundView).offset(140);
         make.left.equalTo(unnorLa.mas_left).offset(-20);
         make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
@@ -104,41 +115,41 @@
     la1.text = @"迟到";
     la1.textColor = FontColor;
     la1.textAlignment = NSTextAlignmentCenter;
-    [round addSubview:la1];
+    [self.roundView addSubview:la1];
     
     UILabel *la2 = [[UILabel alloc] init];
     la2.text = @"早退";
     la2.textColor = FontColor;
     la2.textAlignment = NSTextAlignmentCenter;
-    [round addSubview:la2];
+    [self.roundView addSubview:la2];
     
     UILabel *la3 = [[UILabel alloc] init];
     la3.text = @"缺卡";
     la3.textColor = FontColor;
     la3.textAlignment = NSTextAlignmentCenter;
-    [round addSubview:la3];
+    [self.roundView addSubview:la3];
     
     CGFloat LRpadding = -10;
     [la1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(round).offset(LRpadding);
-        make.left.equalTo(round);
+        make.bottom.equalTo(self.roundView).offset(LRpadding);
+        make.left.equalTo(self.roundView);
         make.width.equalTo(la2);
     }];
     
     [la2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(round).offset(LRpadding);
+        make.bottom.equalTo(self.roundView).offset(LRpadding);
         make.left.equalTo(la1.mas_right);
         make.width.equalTo(la1);
     }];
     
     [la3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(round).offset(LRpadding);
+        make.bottom.equalTo(self.roundView).offset(LRpadding);
         make.left.equalTo(la2.mas_right);
         make.width.equalTo(la2);
     }];
     
     [la3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(round);
+        make.right.equalTo(self.roundView);
     }];
     
     UILabel *la4 = [[UILabel alloc] init];
@@ -146,27 +157,27 @@
     la4.textColor = [UIColor orangeColor];
     la4.font = [UIFont boldSystemFontOfSize:20];
     la4.textAlignment = NSTextAlignmentCenter;
-    [round addSubview:la4];
+    [self.roundView addSubview:la4];
     
     UILabel *la5 = [[UILabel alloc] init];
     la5.text = @"0";
     la5.textColor = [UIColor blackColor];
     la5.font = [UIFont boldSystemFontOfSize:20];
     la5.textAlignment = NSTextAlignmentCenter;
-    [round addSubview:la5];
+    [self.roundView addSubview:la5];
     
     UILabel *la6 = [[UILabel alloc] init];
     la6.text = @"1";
     la6.textColor = [UIColor orangeColor];
     la6.font = [UIFont boldSystemFontOfSize:20];
     la6.textAlignment = NSTextAlignmentCenter;
-    [round addSubview:la6];
+    [self.roundView addSubview:la6];
     
     CGFloat Rpadding = -10;
     
     [la4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(la1.mas_top).offset(Rpadding);
-        make.left.equalTo(round);
+        make.left.equalTo(self.roundView);
         make.width.equalTo(la5);
     }];
     
@@ -183,7 +194,7 @@
     }];
     
     [la6 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(round);
+        make.right.equalTo(self.roundView);
     }];
     
 }

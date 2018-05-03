@@ -9,7 +9,8 @@
 #import "NameViewController.h"
 
 @interface NameViewController ()
-@property (strong, nonatomic) IBOutlet UILabel *titleLa;
+
+@property (strong, nonatomic) IBOutlet UITextField *nameTf;
 
 @end
 
@@ -18,8 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavBarWithTitle:@"姓名"];
-    self.titleLa.text = self.name;
+    self.view.backgroundColor = NormalBgColor;
+    [self setNavBarWithTitle:self.name];
+    _nameTf.placeholder = [NSString stringWithFormat:@"请输入%@",self.name];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确认" style:UIBarButtonItemStylePlain target:self action:@selector(onSure)];
 }
 

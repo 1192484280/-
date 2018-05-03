@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CELL" rowHeight="119" id="KGk-i7-Jjw" customClass="ReportCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_img" translatesAutoresizingMaskIntoConstraints="NO" id="Izj-cX-kJ7">
+                        <rect key="frame" x="24" y="36" width="45" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="F93-Gf-j1t"/>
+                            <constraint firstAttribute="width" constant="45" id="Wfc-PW-5Gt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coa-Sg-VOt">
+                        <rect key="frame" x="309" y="19" width="50" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="FKq-JG-Exa"/>
+                            <constraint firstAttribute="width" constant="50" id="wMX-cj-YCF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH7-qH-7P2">
+                        <rect key="frame" x="77" y="19" width="224" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="800-7m-GF2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新华社北京4月24日电　中共中央政治局4月23日下午就《共产党宣言》及其时代意义举行第五次集体学习。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsp-W6-RHK">
+                        <rect key="frame" x="77" y="48" width="282" height="50"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Izj-cX-kJ7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="0YG-1y-mKt"/>
+                    <constraint firstItem="SH7-qH-7P2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="1Ap-7d-saJ"/>
+                    <constraint firstItem="Dsp-W6-RHK" firstAttribute="leading" secondItem="Izj-cX-kJ7" secondAttribute="trailing" constant="8" id="2Gl-T7-piY"/>
+                    <constraint firstItem="Coa-Sg-VOt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="2VD-oW-cfV"/>
+                    <constraint firstItem="Dsp-W6-RHK" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="NGP-aQ-NoV"/>
+                    <constraint firstItem="Coa-Sg-VOt" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="OL7-vI-aYR"/>
+                    <constraint firstItem="SH7-qH-7P2" firstAttribute="leading" secondItem="Izj-cX-kJ7" secondAttribute="trailing" constant="8" id="bO8-Bh-86M"/>
+                    <constraint firstItem="Coa-Sg-VOt" firstAttribute="leading" secondItem="SH7-qH-7P2" secondAttribute="trailing" constant="8" id="crL-5k-HUb"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Dsp-W6-RHK" secondAttribute="bottom" constant="8" id="een-yn-v3s"/>
+                    <constraint firstItem="Izj-cX-kJ7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fYQ-rx-Q39"/>
+                    <constraint firstItem="Dsp-W6-RHK" firstAttribute="top" secondItem="Coa-Sg-VOt" secondAttribute="bottom" constant="8" id="mSG-qV-8kB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <point key="canvasLocation" x="41.5" y="144.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add_img" width="180" height="174"/>
+    </resources>
+</document>

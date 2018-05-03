@@ -12,8 +12,13 @@
 #import "YYFPSLabel.h"
 #import "LoginViewController.h"
 #import "WorkViewController.h"
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
+
+#define BMAK @"3h4QHm63V1qyKCwARzXedo5IoKghhllw"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) BMKMapManager *mapManager;
 
 @end
 
@@ -48,6 +53,8 @@
     
     [self keyBoardManager];
     
+    [self setBMap];
+    
     return YES;
 }
 
@@ -63,6 +70,22 @@
     //manager.enableAutoToolbar = NO;
     
 }
+- (void)setBMap{
+    
+    //百度地图
+    _mapManager = [BMKMapManager new];
+    BOOL ret = [_mapManager start:BMAK generalDelegate:nil];
+    if (!ret) {
+        
+        NSLog(@"百度地图启动失败");
+        
+    } else {
+        
+        NSLog(@"百度地图启动成功");
+        
+    }
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CELL" rowHeight="120" id="KGk-i7-Jjw" customClass="NoticeCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="十一放假须知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNf-eA-BPC">
+                        <rect key="frame" x="16" y="19" width="262" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Rm9-0E-U75"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="由于项目需要加急，所以大家需要加班加点。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sri-KI-zYO">
+                        <rect key="frame" x="16" y="48" width="343" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="uGy-9N-wCI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.74896121025085449" green="0.74921196699142456" blue="0.74076133966445923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="了解详细&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwg-Yl-uBe">
+                        <rect key="frame" x="276" y="85" width="83" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="83" id="wJo-Hz-bsh"/>
+                            <constraint firstAttribute="height" constant="16" id="zX9-FQ-1p2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20分钟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScU-Ak-lmo">
+                        <rect key="frame" x="286" y="19" width="73" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="73" id="KJ4-du-Hcd"/>
+                            <constraint firstAttribute="height" constant="21" id="Kf5-2E-69f"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.74896121025085449" green="0.74921196699142456" blue="0.74076133966445923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sri-KI-zYO" firstAttribute="top" secondItem="TNf-eA-BPC" secondAttribute="bottom" constant="8" id="3rT-sR-nVh"/>
+                    <constraint firstItem="Xwg-Yl-uBe" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="AXF-xT-6fg"/>
+                    <constraint firstItem="ScU-Ak-lmo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Et1-qW-4Z3"/>
+                    <constraint firstItem="ScU-Ak-lmo" firstAttribute="leading" secondItem="TNf-eA-BPC" secondAttribute="trailing" constant="8" id="L62-Tg-duG"/>
+                    <constraint firstItem="TNf-eA-BPC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Tzl-ag-fIk"/>
+                    <constraint firstItem="TNf-eA-BPC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="fqO-z7-reU"/>
+                    <constraint firstItem="sri-KI-zYO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="h4b-38-0cr"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Xwg-Yl-uBe" secondAttribute="bottom" constant="8" id="kUZ-lx-WT4"/>
+                    <constraint firstItem="sri-KI-zYO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="na7-bg-mY7"/>
+                    <constraint firstItem="ScU-Ak-lmo" firstAttribute="centerY" secondItem="TNf-eA-BPC" secondAttribute="centerY" id="x9T-ki-PNG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <point key="canvasLocation" x="31.5" y="110"/>
+        </tableViewCell>
+    </objects>
+</document>

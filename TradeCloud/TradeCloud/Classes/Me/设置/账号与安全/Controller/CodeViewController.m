@@ -7,9 +7,13 @@
 //
 
 #import "CodeViewController.h"
+#import "CodeView.h"
 
 @interface CodeViewController ()
-
+{
+    
+    IBOutlet UIView *codeView;
+}
 @end
 
 @implementation CodeViewController
@@ -17,7 +21,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = NormalBgColor;
+    
     [self setNavBarWithTitle:@"更换手机号"];
+    
+    [self jhSetupViews];
+}
+
+- (void)jhSetupViews
+{
+    CodeFig *fig = [[CodeFig alloc] init];
+    fig.inputNum = 4;
+    fig.fixedSpacing = 15;
+    fig.tailSpacing = 50;
+    fig.leadSpacing = 50;
+    fig.borColor = [UIColor grayColor];
+    fig.borHeight = 65;
+    fig.font = [UIFont boldSystemFontOfSize:25];
+    CodeView *view = [[CodeView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, codeView.height) andFig:fig];
+    view.finishBlock = ^(NSString *code) {
+        
+        [self showMBPError:code];
+    };
+    [codeView addSubview:view];
+    
 }
 
 - (void)didReceiveMemoryWarning {

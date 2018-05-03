@@ -20,14 +20,6 @@
  */
 - (void)showMBPError:(NSString *)msg;
 
-/**
- * SVP展示错误信息
- */
-- (void)showSVPError:(NSString *)msg;
 
-/**
- * SVP展示成功信息
- */
-- (void)showSVPSuccess:(NSString *)msg;
 
 @end

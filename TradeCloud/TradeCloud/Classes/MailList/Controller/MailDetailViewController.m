@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = NormalBgColor;
     [self setNavBarWithTitle:@"王安石"];
 }
 

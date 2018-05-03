@@ -10,13 +10,16 @@
 #import "SMPagerTabView.h"
 #import "WorkClockController.h"
 #import "OutClockController.h"
+#import "MapViewController.h"
 
-@interface PunchClockViewController ()<SMPagerTabViewDelegate>
-
+@interface PunchClockViewController ()<SMPagerTabViewDelegate,WorkClockControllerDelegate,OutClockControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    UIImagePickerController *_imagePickerController;
+}
 @property (weak, nonatomic) UISegmentedControl *tap;
 @property (nonatomic, strong) NSMutableArray *vcArr;
 @property (nonatomic, strong) SMPagerTabView *segmentView;
-
+@property (weak, nonatomic) UIButton *bbtn;
 @end
 
 @implementation PunchClockViewController
@@ -36,8 +39,10 @@
     _vcArr = [NSMutableArray array];
     
     WorkClockController *workVC = [[WorkClockController alloc]initWithNibName:nil bundle:nil];
+    workVC.delegate = self;
     
     OutClockController *outVC = [[OutClockController alloc]initWithNibName:nil bundle:nil];
+    outVC.delegate = self;
     
     [_vcArr addObject:workVC];
     [_vcArr addObject:outVC];
@@ -48,6 +53,78 @@
     
     
 }
+
+- (void)onWorkPhoto:(UIButton *)btn{
+    
+    self.bbtn = btn;
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    
+    picker.delegate = self;
+    
+    picker.allowsEditing = YES; //可编辑
+    
+    //判断是否可以打开照相机
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        
+    {
+        
+        //摄像头
+        
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        
+        CATransition *animation = [CATransition animation];
+        
+        animation.duration =1.0;
+        
+        animation.type =@"cameraIrisHollowOpen";
+        
+        
+        animation.subtype = kCATransitionFromLeft;
+        
+        [self.view.window.layer addAnimation:animation forKey:nil];
+        
+        
+        [self presentViewController:picker animated:NO completion:nil];
+        
+    }
+    
+    else
+        
+    {
+        
+        NSLog(@"没有摄像头");
+        
+    }
+    
+}
+
+// 拍照完成回调
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0){
+    
+    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        
+        //图片存入相册
+        
+        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        [self.bbtn setTitle:@"OK" forState:UIControlStateNormal];
+    }
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//进入拍摄页面点击取消按钮
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
 - (void)setNavBar{
     
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"icon_back_normal" selectedImageName:@"icon_back_normal" target:self action:@selector(back)];
@@ -97,11 +174,26 @@
 - (SMPagerTabView *)segmentView {
     if (!_segmentView) {
         self.segmentView = [[SMPagerTabView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - (TAB_BAR_HEIGHT) - (iPhoneX_Top))];
+        self.segmentView.theight = 0;
         [self.view addSubview:_segmentView];
     }
     return _segmentView;
 }
 
+
+- (void)onRemark:(UIButton *)btn{
+    
+    [self showMBPError:[NSString stringWithFormat:@"%@",btn.currentTitle]];
+}
+- (void)onAddres:(UIButton *)btn{
+    
+    MapViewController *mapVC = [[MapViewController alloc] init];
+    [mapVC returnLocationBlock:^(BMKPoiInfo *location) {
+        [btn setTitle:location.name forState:UIControlStateNormal];
+    }];
+    [mapVC setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:mapVC animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

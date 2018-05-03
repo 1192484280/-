@@ -59,6 +59,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = NormalBgColor;
+    
     [self setNavBarWithTitle:@"新申请"];
     
     [self.view addSubview:self.collectionView];
@@ -102,7 +104,7 @@
 {
     //设置cell的大小（size）
     
-    return CGSizeMake((kScreenWidth - 45)/3 , (kScreenWidth -45)/3 + 10);
+    return CGSizeMake((kScreenWidth - 45)/3 , (kScreenWidth -45)/3);
 }
 
 - (void)didReceiveMemoryWarning {
