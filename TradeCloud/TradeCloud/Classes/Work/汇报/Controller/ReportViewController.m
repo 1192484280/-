@@ -9,6 +9,7 @@
 #import "ReportViewController.h"
 #import "ReportCell.h"
 #import "AddReportViewController.h"
+#import "ReportDetailController.h"
 
 @interface ReportViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -74,6 +75,8 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    ReportDetailController *VC = [[ReportDetailController alloc] init];
+    [self.navigationController pushViewController:VC animated:YES];
     
 }
 
@@ -87,12 +90,14 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
 
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, kScreenWidth - 20, 50)];
-    label.text = @"今天";
+    label.text = @"2018/5/1";
     
     [view addSubview:label];
     
     return view;
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

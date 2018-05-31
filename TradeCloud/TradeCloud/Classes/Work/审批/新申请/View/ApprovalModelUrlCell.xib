@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CELL" rowHeight="134" id="KGk-i7-Jjw" customClass="ApprovalModelUrlCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="133.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择审批人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzX-hZ-Bfg">
+                        <rect key="frame" x="41" y="13" width="87" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_require_star" translatesAutoresizingMaskIntoConstraints="NO" id="PIx-1u-mkA">
+                        <rect key="frame" x="16" y="11" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="CkF-Er-N1s"/>
+                            <constraint firstAttribute="width" constant="25" id="koX-E4-UWB"/>
+                        </constraints>
+                    </imageView>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qZf-2s-LjU">
+                        <rect key="frame" x="0.0" y="36" width="320" height="97"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMS-h2-2ko">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Ua1-PN-eAy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="jMS-h2-2ko" firstAttribute="top" secondItem="qZf-2s-LjU" secondAttribute="top" id="9gH-UG-IDs"/>
+                            <constraint firstAttribute="trailing" secondItem="jMS-h2-2ko" secondAttribute="trailing" id="YUN-6n-abf"/>
+                            <constraint firstItem="jMS-h2-2ko" firstAttribute="leading" secondItem="qZf-2s-LjU" secondAttribute="leading" id="arw-On-am6"/>
+                            <constraint firstItem="jMS-h2-2ko" firstAttribute="centerY" secondItem="qZf-2s-LjU" secondAttribute="centerY" id="q19-Gs-DUr"/>
+                            <constraint firstAttribute="bottom" secondItem="jMS-h2-2ko" secondAttribute="bottom" id="seH-PR-ZAR"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showsHorizontalScrollIndicator" value="NO"/>
+                        </userDefinedRuntimeAttributes>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hzX-hZ-Bfg" firstAttribute="leading" secondItem="PIx-1u-mkA" secondAttribute="trailing" id="G1K-0E-NTS"/>
+                    <constraint firstItem="qZf-2s-LjU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="G9h-nd-3af"/>
+                    <constraint firstAttribute="bottom" secondItem="qZf-2s-LjU" secondAttribute="bottom" id="aCA-RM-hlk"/>
+                    <constraint firstItem="qZf-2s-LjU" firstAttribute="top" secondItem="PIx-1u-mkA" secondAttribute="bottom" id="bPf-uy-sNM"/>
+                    <constraint firstItem="hzX-hZ-Bfg" firstAttribute="centerY" secondItem="PIx-1u-mkA" secondAttribute="centerY" id="bQu-jz-dOp"/>
+                    <constraint firstAttribute="trailing" secondItem="qZf-2s-LjU" secondAttribute="trailing" id="cnC-dz-RsD"/>
+                    <constraint firstItem="PIx-1u-mkA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jT3-cY-77d"/>
+                    <constraint firstItem="PIx-1u-mkA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="tqI-8M-6WH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="iconView" destination="jMS-h2-2ko" id="G79-j6-iio"/>
+                <outlet property="iconViewWidth" destination="Ua1-PN-eAy" id="jfZ-Wq-73V"/>
+            </connections>
+            <point key="canvasLocation" x="72" y="129"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_require_star" width="25" height="25"/>
+    </resources>
+</document>

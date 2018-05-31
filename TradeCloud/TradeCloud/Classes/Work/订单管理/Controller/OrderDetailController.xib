@@ -56,7 +56,7 @@
                                                 <constraint firstAttribute="width" constant="150" id="TC0-dZ-i1O"/>
                                             </constraints>
                                             <state key="normal">
-                                                <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onCustomerBtn:" destination="-1" eventType="touchUpInside" id="fEv-qc-qdR"/>
@@ -89,7 +89,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="110" id="Lb5-Jf-oXj"/>
                                             </constraints>
-                                            <color key="textColor" red="0.47445547580718994" green="0.4745410680770874" blue="0.47445005178451538" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -127,7 +127,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="110" id="I9f-cX-tvU"/>
                                             </constraints>
-                                            <color key="textColor" red="0.47445547580718994" green="0.4745410680770874" blue="0.47445005178451538" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -166,7 +166,7 @@
                                                 <constraint firstAttribute="width" constant="150" id="bsc-is-CyV"/>
                                             </constraints>
                                             <state key="normal">
-                                                <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onFactoryBtn:" destination="-1" eventType="touchUpInside" id="s3f-CN-t8s"/>
@@ -207,7 +207,7 @@
                                                 <constraint firstAttribute="width" constant="150" id="CwK-te-yV4"/>
                                             </constraints>
                                             <state key="normal">
-                                                <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onTypeBtn:" destination="-1" eventType="touchUpInside" id="fpQ-Pj-1LJ"/>
@@ -248,7 +248,7 @@
                                                 <constraint firstAttribute="width" constant="150" id="Saj-gV-B6H"/>
                                             </constraints>
                                             <state key="normal">
-                                                <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onStateBtn:" destination="-1" eventType="touchUpInside" id="1bw-jo-W9S"/>
@@ -284,13 +284,14 @@
                                     <rect key="frame" x="0.0" y="387" width="375" height="128"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JGw-0B-mdE">
-                                            <rect key="frame" x="8" y="8" width="359" height="112"/>
+                                            <rect key="frame" x="16" y="8" width="343" height="112"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70S-kD-Jce">
-                                            <rect key="frame" x="10" y="15" width="61.5" height="18"/>
+                                            <rect key="frame" x="18" y="15" width="61.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -302,9 +303,9 @@
                                         <constraint firstAttribute="height" constant="128" id="AhL-jg-gAE"/>
                                         <constraint firstAttribute="bottom" secondItem="JGw-0B-mdE" secondAttribute="bottom" constant="8" id="HoY-Fb-Pvk"/>
                                         <constraint firstItem="JGw-0B-mdE" firstAttribute="top" secondItem="E2c-bf-iel" secondAttribute="top" constant="8" id="J2Q-tL-QEn"/>
-                                        <constraint firstItem="JGw-0B-mdE" firstAttribute="leading" secondItem="E2c-bf-iel" secondAttribute="leading" constant="8" id="U56-kS-YJL"/>
-                                        <constraint firstItem="70S-kD-Jce" firstAttribute="leading" secondItem="E2c-bf-iel" secondAttribute="leading" constant="10" id="ngE-0V-lZU"/>
-                                        <constraint firstAttribute="trailing" secondItem="JGw-0B-mdE" secondAttribute="trailing" constant="8" id="xYw-0X-QbD"/>
+                                        <constraint firstItem="JGw-0B-mdE" firstAttribute="leading" secondItem="E2c-bf-iel" secondAttribute="leading" constant="16" id="U56-kS-YJL"/>
+                                        <constraint firstItem="70S-kD-Jce" firstAttribute="leading" secondItem="E2c-bf-iel" secondAttribute="leading" constant="18" id="ngE-0V-lZU"/>
+                                        <constraint firstAttribute="trailing" secondItem="JGw-0B-mdE" secondAttribute="trailing" constant="16" id="xYw-0X-QbD"/>
                                     </constraints>
                                 </view>
                             </subviews>

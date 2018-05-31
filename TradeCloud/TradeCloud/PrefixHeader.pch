@@ -14,12 +14,36 @@
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 
+#define SPACING 16
+#define NEWSPACING 16
+#define FONT @{NSFontAttributeName : [UIFont boldSystemFontOfSize:17]}  //正文att
+
 #define ChildScrollViewDidScrollNSNotification @"ChildScrollViewDidScrollNSNotification"
 #define ChildScrollViewRefreshStateNSNotification @"ChildScrollViewRefreshStateNSNotification"
 
+//搜索通知
+#define WaitHandleNotification @"WaitHandleNotification"
+#define HadHandleNotification @"HadHandleNotification"
+#define SubmitStartNotification @"SubmitStartNotification"
+#define SubmitApprovingtNotification @"SubmitApprovingtNotification"
+#define SubmitRefuseNotification @"SubmitRefuseNotification"
+#define SubmitCompleteNotification @"SubmitCompleteNotification"
 
-#define FontColor [UIColor colorWithHexString:@"5E5E5E"]
-#define NormalBgColor [UIColor colorWithHexString:@"EFEFF4"];
+//处理审批通知（拒绝/同意）
+#define HandleApprovalNotification @"PassApprovalNotification"
+
+//新建审批模板
+#define CreatNewApprovalNotification @"CreatNewApprovalNotification"
+
+//有催办推送
+#define UrgeNotification @"UrgeNotification"
+
+//上下班打卡完成
+#define PunchClickNotification @"PunchClickNotification"
+
+#define FontColor [UIColor colorWithHexString:@"#929292"]
+#define DetailColor [UIColor colorWithHexString:@"#D3D3D3"]
+#define NormalBgColor [UIColor colorWithHexString:@"#EFEFF4"];
 // 判断是否是iPhone X
 #define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 // 状态栏高度
@@ -31,11 +55,15 @@
 // home indicator
 #define iPhoneX_Bottom iPhoneX ? 34.0f : 0.0f
 
+#define PunchHeaderHeight 380
+
 #define MJWeakSelf __weak typeof(self) weakSelf = self;
 #define ClassName NSString *className = NSStringFromClass([self class]);
 
 
+#define NAVBARCOLOR [UIColor colorWithRed:1.000 green:0.795 blue:0.014 alpha:1.000]
 
+#import "NSString+Extension.h"
 #import "UIColor+Extension.h"
 #import "UIView+Extension.h"
 #import "UILabel+Extension.h"
@@ -48,9 +76,11 @@
 #import <IQKeyboardManager.h>
 #import "HttpTool.h"
 #import "UserDefaultsTool.h"
-#import "MBProgressHUD+Add.h"
 #import "MJExtension.h"
-#import <SVProgressHUD.h>
 #import "SingleManager.h"
-
+#import "UIScrollView+EmptyDataSet.h"
+#import <UIButton+WebCache.h>
+#import <UIImageView+WebCache.h>
+#import "StrTool.h"
+#import "UIView+Toast.h"
 #endif /* PrefixHeader_pch */

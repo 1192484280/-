@@ -12,6 +12,15 @@
 #import "OutClockController.h"
 #import "MapViewController.h"
 
+#import "PunchClockList.h"
+#import "PunchClockParameterModel.h"
+
+#import "CommonStore.h"
+#import "PunchStore.h"
+
+#import "RemarkController.h"
+
+
 @interface PunchClockViewController ()<SMPagerTabViewDelegate,WorkClockControllerDelegate,OutClockControllerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     UIImagePickerController *_imagePickerController;
@@ -32,6 +41,27 @@
     [self setNavBar];
     
     [self setUI];
+    
+    [self getPunchConfig];
+    
+    [PunchClockList sharedInstance].parameterModel.company_id = [UserDefaultsTool getObjWithKey:@"company_id"];
+    [PunchClockList sharedInstance].parameterModel.department_id = [UserDefaultsTool getObjWithKey:@"department_id"];
+    [PunchClockList sharedInstance].parameterModel.staff_id = [UserDefaultsTool getObjWithKey:@"staff_id"];
+    [PunchClockList sharedInstance].parameterModel.type_status = @"1";
+}
+
+- (void)getPunchConfig{
+    
+    MJWeakSelf
+    PunchStore *store = [[PunchStore alloc] init];
+    [store getPunchInfoWithCompany_id:[UserDefaultsTool getObjWithKey:@"company_id"] Success:^(CompanyPunchInfo *config) {
+        
+        [PunchClockList sharedInstance].punchConfig = config;
+        
+    } Failure:^(NSError *error) {
+       
+        [weakSelf showMBPError:[HttpTool handleError:error]];
+    }];
 }
 
 - (void)setUI{
@@ -54,6 +84,7 @@
     
 }
 
+#pragma mark - WorkClockControllerDelegate,OutClockControllerDelegate
 - (void)onWorkPhoto:(UIButton *)btn{
     
     self.bbtn = btn;
@@ -106,10 +137,55 @@
     
     if(picker.sourceType == UIImagePickerControllerSourceTypeCamera){
         
+        
         //图片存入相册
         
         //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-        [self.bbtn setTitle:@"OK" forState:UIControlStateNormal];
+        
+        if([[PunchClockList sharedInstance].parameterModel.location isEqualToString:@"定位中"]){
+            
+            [self.tabBarController.view makeToast:@"等待定位完成"];
+            return;
+        }
+        
+        [self.view makeToastActivity:CSToastPositionCenter];
+        
+        MJWeakSelf
+        
+        CommonStore *store = [[CommonStore alloc] init];
+        [store upPhoto:image Success:^(NSString *imgUrl) {
+            
+            [PunchClockList sharedInstance].parameterModel.image = imgUrl;
+            [weakSelf.bbtn setTitle:@"打卡中..." forState:UIControlStateNormal];
+            
+            PunchStore *punchStore = [[PunchStore alloc] init];
+            [punchStore punchclockSuccess:^{
+                
+                [weakSelf.view hideToastActivity];
+                [weakSelf.bbtn setTitle:@"打卡成功" forState:UIControlStateNormal];
+                
+                [UserDefaultsTool setObj:[StrTool getNowTime] andKey:@"lastPunchTime"];
+                
+                //打卡成功，发送通知
+                NSNotification *notification = [NSNotification notificationWithName:PunchClickNotification object:nil userInfo:nil];
+            
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                
+            } Failure:^(NSError *error) {
+                
+                [weakSelf.view hideToastActivity];
+                [weakSelf.view makeToast:[HttpTool handleError:error] duration:3.0 position:CSToastPositionCenter];
+                [weakSelf.bbtn setTitle:@"打卡失败" forState:UIControlStateNormal];
+                
+            }];
+            
+        } Failure:^(NSError *error) {
+            
+            [weakSelf.view hideToastActivity];
+            [weakSelf.tabBarController.view makeToast:[HttpTool handleError:error]];
+            [self.bbtn setTitle:@"上传失败" forState:UIControlStateNormal];
+            
+        }];
     }
     
     
@@ -140,6 +216,7 @@
 
 - (void)selectItem:(UISegmentedControl *)sender {
     
+    NSLog(@"%ld",(long)sender.selectedSegmentIndex);
     [self.segmentView selectTabWithIndex:sender.selectedSegmentIndex animate:YES];
     
 }
@@ -160,13 +237,14 @@
 }
 
 - (void)whenSelectOnPager:(NSUInteger)number {
-    if (number == 1) {
-        
-        self.tap.selectedSegmentIndex = 1;
-        
-    }else if (number == 0){
+    if (number == 0){
         
         self.tap.selectedSegmentIndex = 0;
+        [PunchClockList sharedInstance].parameterModel.type_status = @"1";
+    }else{
+        
+        self.tap.selectedSegmentIndex = 1;
+        [PunchClockList sharedInstance].parameterModel.type_status = @"2";
     }
 }
 
@@ -180,16 +258,25 @@
     return _segmentView;
 }
 
-
+#pragma mark - 填写备注
 - (void)onRemark:(UIButton *)btn{
-    
-    [self showMBPError:[NSString stringWithFormat:@"%@",btn.currentTitle]];
+
+    RemarkController *VC = [[RemarkController alloc] init];
+    [VC setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:VC animated:YES];
 }
+
+#pragma mark - 选择位置
 - (void)onAddres:(UIButton *)btn{
     
     MapViewController *mapVC = [[MapViewController alloc] init];
     [mapVC returnLocationBlock:^(BMKPoiInfo *location) {
-        [btn setTitle:location.name forState:UIControlStateNormal];
+        
+        if (location.name.length > 0) {
+            
+            [btn setTitle:location.name forState:UIControlStateNormal];
+        }
+        
     }];
     [mapVC setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:mapVC animated:YES];

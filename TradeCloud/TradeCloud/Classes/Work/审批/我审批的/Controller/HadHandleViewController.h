@@ -8,6 +8,14 @@
 
 #import "BaseViewController.h"
 
+@protocol HadHandleViewControllerDelegate<NSObject>
+
+- (void)selectedCell:(BOOL)showBottomView;
+
+@end
+
 @interface HadHandleViewController : BaseViewController
+
+@property (weak, nonatomic) id<HadHandleViewControllerDelegate> delegate;
 
 @end

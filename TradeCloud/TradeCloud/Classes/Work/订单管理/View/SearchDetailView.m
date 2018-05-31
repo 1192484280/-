@@ -134,17 +134,17 @@
     [customerBtn addTarget:self action:@selector(onCustomer:) forControlEvents:UIControlEventTouchUpInside];
     self.customerBtn = customerBtn;
     
-    UIView *line = [[UIView alloc] init];
-    line.backgroundColor = [UIColor colorWithHexString:@"#EDEDED"];
-    [self addSubview:line];
-    self.line = line;
+//    UIView *line = [[UIView alloc] init];
+//    line.backgroundColor = [UIColor colorWithHexString:@"#EDEDED"];
+//    [self addSubview:line];
+//    self.line = line;
     
     UIButton *searchBtn = [[UIButton alloc] init];
     [searchBtn setTitle:@"查询" forState:UIControlStateNormal];
     [searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     searchBtn.layer.cornerRadius = 8;
     searchBtn.layer.masksToBounds = YES;
-    searchBtn.backgroundColor = [UIColor orangeColor];
+    searchBtn.backgroundColor = NAVBARCOLOR;
     [searchBtn addTarget:self action:@selector(onSecrchBtn) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:searchBtn];
     self.searchBtn = searchBtn;
@@ -277,21 +277,21 @@
     self.customerBtn.width = kScreenWidth - (CGRectGetMaxX(self.customerLa.frame) + 20) - 16;
     self.customerBtn.height = 30;
     
-    self.line.x = 0;
-    self.line.y = CGRectGetMaxY(self.customerLa.frame) + 15;
-    self.line.width = kScreenWidth;
-    self.line.height = 0.5;
+//    self.line.x = 0;
+//    self.line.y = CGRectGetMaxY(self.customerLa.frame) + 15;
+//    self.line.width = kScreenWidth;
+//    self.line.height = 0.5;
     
-    self.searchBtn.y = CGRectGetMaxY(self.line.frame) + 20;
-    self.searchBtn.x = (kScreenWidth - 150)/2;
-    self.searchBtn.width = 150;
+    self.searchBtn.y = CGRectGetMaxY(self.customerBtn.frame) + 30;
+    self.searchBtn.x = 50;
+    self.searchBtn.width = kScreenWidth - 100;
     self.searchBtn.height = 38;
 }
 
 - (void)setTf:(UITextField *)tf{
     
     tf.layer.borderWidth = 0.5;
-    tf.layer.borderUIColor = [UIColor colorWithHexString:@"#B8B8B8"];
+    tf.layer.borderUIColor = DetailColor;
     tf.font = [UIFont systemFontOfSize:15];
     tf.textAlignment = NSTextAlignmentCenter;
 }
@@ -299,9 +299,9 @@
 - (void)setBtn:(UIButton *)btn WithTitle:(NSString *)title{
     
     [btn setTitle:title forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [btn setTitleColor:DetailColor forState:UIControlStateNormal];
     btn.layer.borderWidth = 0.5;
-    btn.layer.borderUIColor = [UIColor colorWithHexString:@"#B8B8B8"];
+    btn.layer.borderUIColor = DetailColor;
     btn.titleLabel.font = [UIFont systemFontOfSize:13];
     btn.titleLabel.textAlignment = NSTextAlignmentCenter;
 }

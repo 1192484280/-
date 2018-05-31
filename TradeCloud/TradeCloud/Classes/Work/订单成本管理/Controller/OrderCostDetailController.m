@@ -12,11 +12,11 @@
 #import "CustomerStore.h"
 #import "CustomerModel.h"
 #import "OrderCostAddParameterModel.h"
-#import "CGXPickerView.h"
 #import "OrderCostStore.h"
 #import "OrderCostDetailModel.h"
 #import <UIButton+WebCache.h>
 #import "TZImagePickerController.h"
+#import "BRPickerView.h"
 
 @interface OrderCostDetailController ()<UITextFieldDelegate,UITextViewDelegate,TZImagePickerControllerDelegate>
 
@@ -204,11 +204,11 @@
         
         if (_ifEdit) {
             
-            UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(-10 , -5, 20, 20)];
+            UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(16*(i+1) + 65*i - 10 , 7.5, 20, 20)];
             [delBtn setImage:[UIImage imageNamed:@"deleBtn"] forState:UIControlStateNormal];
             delBtn.tag = 100 + i;
             [delBtn addTarget:self action:@selector(onDelBtn:) forControlEvents:UIControlEventTouchUpInside];
-            [btn addSubview:delBtn];
+            [self.photoView addSubview:delBtn];
         }else{
             
             _photoView_width.constant = (CGRectGetMaxX(btn.frame)) + 30;
@@ -232,13 +232,39 @@
     
     [self.view endEditing:YES];
     
-    if (self.imgArr.count == self.origArr.count) {
+    BOOL isExist = YES;
+    for (int i = 0; i<self.imgArr.count; i++) {
+        
+        if ([self.imgArr[i] isKindOfClass:[UIImage class]]) {
+            
+            isExist = NO;
+        }
+    }
+    
+    if (self.imgArr.count == self.origArr.count && isExist) {
         
         [self save];
         
         return;
     }
     
+    
+    if (isExist) {
+        
+        NSMutableArray *urlArr = [NSMutableArray array];
+        for (int i = 0; i<self.imgArr.count; i++) {
+            
+            [urlArr addObject:self.imgArr[i]];
+        }
+        
+        self.parameterModel.attachments = [urlArr mj_JSONString];
+        [self save];
+        
+        return;
+    }
+    
+    
+   [self.view makeToastActivity:CSToastPositionCenter];
     
     NSMutableArray *urlArr = [NSMutableArray array];
     NSMutableArray *imArr = [NSMutableArray array];
@@ -259,7 +285,7 @@
     MJWeakSelf
     for (int i =0; i<imArr.count; i++) {
         
-        [SVProgressHUD show];
+        
         //任务1
         dispatch_async(quene, ^{
             
@@ -279,7 +305,7 @@
                 
             } Failure:^(NSError *error) {
                 
-                [SVProgressHUD dismiss];
+                
                 return [weakSelf showMBPError:[HttpTool handleError:error]];
             }];
             
@@ -295,7 +321,7 @@
     OrderCostStore *store = [[OrderCostStore alloc] init];
     [store editWithParameterModel:self.parameterModel Success:^{
         
-        [SVProgressHUD dismiss];
+        [self.view hideToastActivity];
         [weakSelf showMBPError:@"修改成功!"];
         
         if (weakSelf.block != nil) {
@@ -310,7 +336,7 @@
         
     } Failure:^(NSError *error) {
         
-        [SVProgressHUD dismiss];
+        
         [weakSelf showMBPError:[HttpTool handleError:error]];
     }];
 }
@@ -356,16 +382,20 @@
     
     [self.view endEditing:YES];
     
-    NSDate *now = [NSDate date];
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSString *nowStr = [fmt stringFromDate:now];
+    NSDate *minDate = [NSDate setYear:1990 month:3 day:12];
+    NSDate *maxDate = [NSDate date];
+    
     MJWeakSelf
-    [CGXPickerView showDatePickerWithTitle:@"选择时间" DateType:UIDatePickerModeDate DefaultSelValue:nil MinDateStr:@"1900-01-01 00:00:00" MaxDateStr:nowStr IsAutoSelect:YES Manager:nil ResultBlock:^(NSString *selectValue) {
+    [BRDatePickerView showDatePickerWithTitle:@"选择日期" dateType:BRDatePickerModeYMD defaultSelValue:nil minDate:minDate maxDate:maxDate isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectValue) {
         
         [sender setTitle:selectValue forState:UIControlStateNormal];
         weakSelf.parameterModel.pay_time = selectValue;
+        
+    } cancelBlock:^{
+        
+        
     }];
+    
 }
 - (IBAction)onTypeBtn:(UIButton *)sender {
     

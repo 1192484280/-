@@ -13,8 +13,9 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        
         self.titleLabel.font = [UIFont systemFontOfSize:15.0f];
-        [self setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self setTitleColor:FontColor forState:UIControlStateNormal];
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
     }

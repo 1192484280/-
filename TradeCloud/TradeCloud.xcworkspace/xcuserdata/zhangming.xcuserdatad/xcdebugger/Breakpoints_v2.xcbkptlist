@@ -13,5 +13,549 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x5ba1;&#x6279;/&#x65b0;&#x7533;&#x8bf7;/View/ApprovalModelUrlCell.m"
+            timestampString = "548928699.7590311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-onSelectBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x7ba1;&#x7406;/Store/OrderStore.m"
+            timestampString = "549425520.647434"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-deleteOrderWithId:Success:Failure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OrderStore deleteOrderWithId:Success:Failure:]"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/Store/OrderStore.m"
+                  timestampString = "549425652.5572701"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__48-[OrderStore deleteOrderWithId:Success:Failure:]_block_invoke"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/Store/OrderStore.m"
+                  timestampString = "549425652.558847"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x7ba1;&#x7406;/Store/OrderStore.m"
+            timestampString = "549425520.647496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-deleteOrderWithId:Success:Failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x7ba1;&#x7406;/Controller/OrderAddController.m"
+            timestampString = "549425520.6475461"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OrderAddController sure]"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/Controller/OrderAddController.m"
+                  timestampString = "549425652.566372"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "1796">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OrderAddController sure]"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/Controller/OrderAddController.m"
+                  timestampString = "549425652.5680341"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "1808">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x7ba1;&#x7406;/Store/OrderStore.m"
+            timestampString = "549425520.6479"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "-addOrderWithParameterModel:Success:Failure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OrderStore addOrderWithParameterModel:Success:Failure:]"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/Store/OrderStore.m"
+                  timestampString = "549425652.5717551"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "2028">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__57-[OrderStore addOrderWithParameterModel:Success:Failure:]_block_invoke"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86/Store/OrderStore.m"
+                  timestampString = "549425652.573513"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x7ba1;&#x7406;/Store/OrderStore.m"
+            timestampString = "549425520.647948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "-addOrderWithParameterModel:Success:Failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x7ba1;&#x7406;/Store/OrderStore.m"
+            timestampString = "549425520.64799"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "-addOrderWithParameterModel:Success:Failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x5ba2;&#x6237;&#x7ba1;&#x7406;/Store/CustomerStore.m"
+            timestampString = "549264177.845282"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-deleteCustomerWithId:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x5ba2;&#x6237;&#x7ba1;&#x7406;/Store/CustomerStore.m"
+            timestampString = "549264693.8452311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-deleteCustomerWithId:success:failure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CustomerStore deleteCustomerWithId:success:failure:]"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E5%AE%A2%E6%88%B7%E7%AE%A1%E7%90%86/Store/CustomerStore.m"
+                  timestampString = "549425652.5883681"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__54-[CustomerStore deleteCustomerWithId:success:failure:]_block_invoke"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E5%AE%A2%E6%88%B7%E7%AE%A1%E7%90%86/Store/CustomerStore.m"
+                  timestampString = "549425652.590067"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x6210;&#x672c;&#x7ba1;&#x7406;/Store/OrderCostStore.m"
+            timestampString = "549273646.20429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-addOrderCostWithParameterModel:Success:Failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x6210;&#x672c;&#x7ba1;&#x7406;/Controller/OrderCostDetailController.m"
+            timestampString = "549273646.206419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "-refreshUIWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x6210;&#x672c;&#x7ba1;&#x7406;/Controller/OrderCostDetailController.m"
+            timestampString = "549273646.208747"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "-onSaveBtn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x5ba1;&#x6279;/&#x7533;&#x8bf7;&#x8be6;&#x60c5;/Store/ApprovalDetailStore.m"
+            timestampString = "549270564.533319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "-getApprovalDetailWithStaff_id:andApproval_id:Success:Failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x5ba1;&#x6279;/&#x65b0;&#x7533;&#x8bf7;/Store/NewApprovalStore.m"
+            timestampString = "549271478.295186"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-postApprovalWithId:Dic:Success:Failure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NewApprovalStore postApprovalWithId:Dic:Success:Failure:]"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E5%AE%A1%E6%89%B9/%E6%96%B0%E7%94%B3%E8%AF%B7/Store/NewApprovalStore.m"
+                  timestampString = "549425652.608693"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "536">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__59-[NewApprovalStore postApprovalWithId:Dic:Success:Failure:]_block_invoke"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E5%AE%A1%E6%89%B9/%E6%96%B0%E7%94%B3%E8%AF%B7/Store/NewApprovalStore.m"
+                  timestampString = "549425652.61032"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x6210;&#x672c;&#x7ba1;&#x7406;/Controller/OrderCostController.m"
+            timestampString = "549273646.211346"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
+            landmarkName = "-onPersonBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x6210;&#x672c;&#x7ba1;&#x7406;/Store/OrderCostStore.m"
+            timestampString = "549273646.211549"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "-getListWithParameterModel:Success:Failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x6253;&#x5361;/&#x7edf;&#x8ba1;/Controller/CountViewController.m"
+            timestampString = "549360061.993642"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "-calendar:didSelectDate:atMonthPosition:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x6253;&#x5361;/&#x6253;&#x5361;/Store/PunchStore.m"
+            timestampString = "549360061.99382"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-punchclockSuccess:Failure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PunchStore punchclockSuccess:Failure:]"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E6%89%93%E5%8D%A1/%E6%89%93%E5%8D%A1/Store/PunchStore.m"
+                  timestampString = "549425652.624474"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "1820">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[PunchStore punchclockSuccess:Failure:]_block_invoke"
+                  moduleName = "TradeCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangming/Desktop/TradeCloud/TradeCloud/Classes/Work/%E6%89%93%E5%8D%A1/%E6%89%93%E5%8D%A1/Store/PunchStore.m"
+                  timestampString = "549425652.626103"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x6253;&#x5361;/&#x6253;&#x5361;/Controller/WorkClockController.m"
+            timestampString = "549425520.648219"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "-photoBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Tool/StrTool/StrTool.m"
+            timestampString = "549425520.648272"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "+compareCurrentTime:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x6253;&#x5361;/&#x6253;&#x5361;/Controller/WorkClockController.m"
+            timestampString = "549425520.6483181"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
+            landmarkName = "-photoBtn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeCloud/Classes/Work/&#x8ba2;&#x5355;&#x7ba1;&#x7406;/Store/OrderStore.m"
+            timestampString = "549425649.237211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "-getorderDetailWithId:Success:Failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

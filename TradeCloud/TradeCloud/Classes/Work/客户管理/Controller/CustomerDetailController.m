@@ -58,18 +58,16 @@
 }
 - (void)refresh{
     
-    [SVProgressHUD show];
-    
     CustomerStore *store = [[CustomerStore alloc] init];
     [store getCustomerDetailWithId:self.customer_id Success:^(CustomerDetailModel *model) {
         
         [self setUIWithModel:model];
-        [SVProgressHUD dismiss];
+        
         
     } Failure:^(NSError *error) {
         
         [self showMBPError:[HttpTool handleError:error]];
-        [SVProgressHUD dismiss];
+        
     }];
 }
 - (void)onSave{

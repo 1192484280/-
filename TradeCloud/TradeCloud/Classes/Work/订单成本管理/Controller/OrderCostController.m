@@ -14,17 +14,17 @@
 #import "OrderCostStore.h"
 #import "OrderCostModel.h"
 #import "OrderCostAddController.h"
-#import "CGXPickerView.h"
 #import "CommonStore.h"
 #import "CommonModel.h"
 #import "OrderCostList.h"
 #import "OrderCostParameterModel.h"
 #import "StaffModel.h"
+#import "BRPickerView.h"
 
 #define AlertHeight 180
 #define SearchDetailHeight 260
 
-@interface OrderCostController ()<UITableViewDelegate,UITableViewDataSource,OrderCostSearchViewDelegate,OrderCostDetailSearchViewDelegate>
+@interface OrderCostController ()<UITableViewDelegate,UITableViewDataSource,OrderCostSearchViewDelegate,OrderCostDetailSearchViewDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 
@@ -113,12 +113,20 @@
         _tableView.sectionFooterHeight = 9.5;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableHeaderView = self.searchView;
+        
+        _tableView.emptyDataSetSource = self;
+        _tableView.emptyDataSetDelegate = self;
+        
         MJWeakSelf
-        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-           
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            
             [OrderCostList sharedInstance].parameterModel.page = 1;
             [weakSelf refresh];
         }];
+        
+        header.lastUpdatedTimeLabel.hidden = YES;
+        _tableView.mj_header = header;
+        
         
         _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     }
@@ -135,7 +143,7 @@
 
 - (void)refresh{
     
-    [SVProgressHUD show];
+   
     
     OrderCostStore *store = [[OrderCostStore alloc] init];
     MJWeakSelf
@@ -165,14 +173,14 @@
         
         self.searchView.total.text = [NSString stringWithFormat:@"支出金额: ¥%ld",(long)_totalMoney];
         [weakSelf.tableView reloadData];
-        [SVProgressHUD dismiss];
+        
         
     } Failure:^(NSError *error) {
         
         [weakSelf showMBPError:[HttpTool handleError:error]];
         [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf.tableView.mj_footer endRefreshing];
-        [SVProgressHUD dismiss];
+        
     }];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -221,18 +229,35 @@
                 return [self showMBPError:@"您没有权限删除此订单!"];
             }
             
-            MJWeakSelf
-            [store deleteWithId:model.cost_id Success:^{
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您将删除此订单成本" preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alert addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                MJWeakSelf
+                [store deleteWithId:model.cost_id Success:^{
+                    
+                    [weakSelf showMBPError:@"删除成功!"];
+                    [weakSelf.listArr removeObjectAtIndex:indexPath.section];
+                    [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
+                    [weakSelf refresh];
+                    
+                } Failure:^(NSError *error) {
+                    
+                    [weakSelf showMBPError:[HttpTool handleError:error]];
+                }];
                 
-                [weakSelf showMBPError:@"删除成功!"];
-                [weakSelf.listArr removeObjectAtIndex:indexPath.section];
-                [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
-                [weakSelf refresh];
+            }]];
+            
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
-            } Failure:^(NSError *error) {
+            }]];
+            
+            [self presentViewController:alert animated:YES completion:^{
                 
-                [weakSelf showMBPError:[HttpTool handleError:error]];
             }];
+
+            
+            
         }
     }
 }
@@ -269,7 +294,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [OrderCostList sharedInstance].parameterModel = [[OrderCostParameterModel alloc] init];
+    
     
     [self setNavBar];
     
@@ -277,9 +302,9 @@
     
     [self.view insertSubview:self.detailSearchView belowSubview:self.navigationController.navigationBar];
     
+    [OrderCostList sharedInstance].parameterModel = [[OrderCostParameterModel alloc] init];
     [OrderCostList sharedInstance].parameterModel.staff_id = [UserDefaultsTool getObjWithKey:@"staff_id"];
     [OrderCostList sharedInstance].parameterModel.num = @"6";
-    
     [OrderCostList sharedInstance].parameterModel.page = 1;
     
     [self refresh];
@@ -384,18 +409,20 @@
     
     [self.view endEditing:YES];
     
-    NSDate *now = [NSDate date];
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSString *nowStr = [fmt stringFromDate:now];
+    NSDate *minDate = [NSDate setYear:1990 month:3 day:12];
+    NSDate *maxDate = [NSDate date];
     
-    
-    [CGXPickerView showDatePickerWithTitle:@"选择时间" DateType:UIDatePickerModeDate DefaultSelValue:nil MinDateStr:@"1900-01-01 00:00:00" MaxDateStr:nowStr IsAutoSelect:YES Manager:nil ResultBlock:^(NSString *selectValue) {
+    [BRDatePickerView showDatePickerWithTitle:@"选择日期" dateType:BRDatePickerModeYMD defaultSelValue:nil minDate:minDate maxDate:maxDate isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectValue) {
         
         [btn setTitle:selectValue forState:UIControlStateNormal];
         
         [OrderCostList sharedInstance].parameterModel.start_time = selectValue;
+        
+    } cancelBlock:^{
+        
+        
     }];
+    
 }
 
 #pragma mark - 结束日期
@@ -403,17 +430,20 @@
     
     [self.view endEditing:YES];
     
-    NSDate *now = [NSDate date];
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSString *nowStr = [fmt stringFromDate:now];
+    NSDate *minDate = [NSDate setYear:1990 month:3 day:12];
+    NSDate *maxDate = [NSDate date];
     
-    [CGXPickerView showDatePickerWithTitle:@"选择时间" DateType:UIDatePickerModeDate DefaultSelValue:nil MinDateStr:@"1900-01-01 00:00:00" MaxDateStr:nowStr IsAutoSelect:YES Manager:nil ResultBlock:^(NSString *selectValue) {
+    [BRDatePickerView showDatePickerWithTitle:@"选择日期" dateType:BRDatePickerModeYMD defaultSelValue:nil minDate:minDate maxDate:maxDate isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectValue) {
         
         [btn setTitle:selectValue forState:UIControlStateNormal];
-       
+        
         [OrderCostList sharedInstance].parameterModel.end_time = selectValue;
+        
+    } cancelBlock:^{
+        
+        
     }];
+    
 }
 
 #pragma mark - 支出类型
@@ -488,10 +518,26 @@
 
 - (void)clickSearchBtn:(NSString *)title{
     
+    [OrderCostList sharedInstance].parameterModel = [[OrderCostParameterModel alloc] init];
+    [OrderCostList sharedInstance].parameterModel.staff_id = [UserDefaultsTool getObjWithKey:@"staff_id"];
+    [OrderCostList sharedInstance].parameterModel.num = @"6";
     [OrderCostList sharedInstance].parameterModel.page = 1;
     [OrderCostList sharedInstance].parameterModel.section_number = title;
     [self refresh];
 }
+
+#pragma mark - DZNEmptyDataSetDelegate
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    return [UIImage imageNamed:@"img_null"];
+}
+
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
+    [self refresh];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

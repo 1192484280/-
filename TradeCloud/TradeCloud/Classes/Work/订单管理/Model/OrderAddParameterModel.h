@@ -33,4 +33,6 @@
 
 @property (nonatomic, copy) NSString *note;
 
+@property (nonatomic, copy) NSString *attachments;
+
 @end

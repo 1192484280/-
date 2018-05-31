@@ -50,7 +50,7 @@
     
     if (!_normalImgArr) {
         
-        _normalImgArr = @[@"",@"",@"",@"",@""];
+        _normalImgArr = @[@"icon_tabBar01_normal",@"icon_tabBar02_normal",@"icon_tabBar03_normal",@"icon_tabBar04_normal",@"icon_tabBar05_normal"];
     }
     
     return _normalImgArr;
@@ -60,7 +60,7 @@
     
     if (!_selectedImgArr) {
         
-        _selectedImgArr = @[@"",@"",@"",@"",@""];
+        _selectedImgArr = @[@"icon_tabBar01_selected",@"icon_tabBar02_selected",@"icon_tabBar03_selected",@"icon_tabBar04_selected",@"icon_tabBar05_selected"];
     }
     
     return _selectedImgArr;
@@ -86,10 +86,10 @@
     nav.tabBarItem.title = title;
     [nav.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [nav.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]} forState:UIControlStateNormal];
-    [nav.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateSelected];
+    [nav.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:NAVBARCOLOR} forState:UIControlStateSelected];
     [nav.navigationBar setTintColor:[UIColor whiteColor]];
-//    nav.tabBarItem.image = [[UIImage imageNamed:normalImg] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    nav.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImg] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nav.tabBarItem.image = [[UIImage imageNamed:normalImg] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nav.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImg] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [self addChildViewController:nav];
     
 }

@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PunchModel;
 
 @interface WorkClockCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *yearLa;
+
+@property (strong, nonatomic) IBOutlet UILabel *timeLa;
+@property (strong, nonatomic) IBOutlet UILabel *locationLa;
+
+@property (strong, nonatomic) PunchModel *model;
 
 + (instancetype)tempWithTableView:(UITableView *)tableView;
 

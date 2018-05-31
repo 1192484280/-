@@ -7,6 +7,8 @@
 //
 
 #import "OutHeaderView.h"
+#import <YYLabel.h>
+#import <NSAttributedString+YYText.h>
 
 #define pi 3.14159265359
 
@@ -14,16 +16,17 @@
 
 @interface OutHeaderView()
 
-@property (strong, nonatomic) UILabel *timeLa;
-@property (strong, nonatomic) UIButton *addreBtn;
+@property (strong, nonatomic) YYLabel *timeLa;
+@property (strong, nonatomic) UIButton *titleBtn;
 @property (strong, nonatomic) UIButton *remarkBtn;
 @property (strong, nonatomic) UIButton *photoBtn;
+
 
 @end
 
 @implementation OutHeaderView
 
-- (UILabel *)timeLa{
+- (YYLabel *)timeLa{
     
     if (!_timeLa) {
         
@@ -32,13 +35,24 @@
         [formatter setDateFormat:@"HH:mm"];
         NSString *currentDate = [formatter stringFromDate:date];
         
-        _timeLa = [[UILabel alloc] init];
-        _timeLa.size = CGSizeMake(200, 60);
+        NSMutableAttributedString *one = [[NSMutableAttributedString alloc] initWithString:currentDate];
+        one.yy_font = [UIFont boldSystemFontOfSize:50];
+        one.yy_color = [UIColor colorWithRed:1.000 green:0.795 blue:0.014 alpha:1.000];
+        
+        YYTextShadow *innerShadow = [YYTextShadow new];
+        innerShadow.color = [UIColor blackColor];
+        innerShadow.offset = CGSizeMake(0, 1);
+        innerShadow.radius = 1;
+        one.yy_textInnerShadow = innerShadow;
+        
+        _timeLa = [YYLabel new];
+        _timeLa.attributedText = one;
+        _timeLa.width = 200;
+        _timeLa.height = 60;
         _timeLa.centerX = self.centerX;
-        _timeLa.centerY = self.centerY - 40;
-        _timeLa.text = currentDate;
-        _timeLa.font = [UIFont boldSystemFontOfSize:50];
+        _timeLa.centerY = self.centerY - 70;
         _timeLa.textAlignment = NSTextAlignmentCenter;
+        _timeLa.textVerticalAlignment = YYTextVerticalAlignmentCenter;
     }
     
     return _timeLa;
@@ -51,53 +65,54 @@
         _photoBtn = [[UIButton alloc] init];
         _photoBtn.size = CGSizeMake(200, 40);
         [_photoBtn setTitle:@"拍照打卡" forState:UIControlStateNormal];
-        [_photoBtn setTitleColor:FontColor forState:UIControlStateNormal];
+        [_photoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         _photoBtn.centerX = self.centerX;
         _photoBtn.y = CGRectGetMaxY(self.timeLa.frame);
-        _photoBtn.titleLabel.font = [UIFont systemFontOfSize:20];
+        _photoBtn.titleLabel.font = [UIFont systemFontOfSize:17];
         [_photoBtn addTarget:self action:@selector(onPhotoBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _photoBtn;
 }
 
-- (UIButton *)addreBtn{
+- (UIButton *)titleBtn{
     
-    if (!_addreBtn) {
+    if (!_titleBtn) {
         
-        _addreBtn = [[UIButton alloc] init];
-        [_addreBtn setTitle:@"当前位置" forState:UIControlStateNormal];
-        [_addreBtn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-        _addreBtn.titleLabel.font = [UIFont boldSystemFontOfSize:25];
-        _addreBtn.size = CGSizeMake(kScreenWidth, 30);
-        _addreBtn.centerX = self.centerX;
-        _addreBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        _addreBtn.y = self.height - 70;
-        [_addreBtn addTarget:self action:@selector(onAddress:) forControlEvents:UIControlEventTouchUpInside];
+        _titleBtn = [[UIButton alloc] init];
+        [_titleBtn setTitle:@"定位中..." forState:UIControlStateNormal];
+        [_titleBtn setTitleColor:FontColor forState:UIControlStateNormal];
+        _titleBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+        _titleBtn.titleLabel.font = [UIFont boldSystemFontOfSize:25];
+        [_titleBtn addTarget:self action:@selector(onTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+//        _titleLa.text = @"当前位置";
+//        _titleLa.textColor = [UIColor colorWithHexString:@"#F8711C"];
+//        _titleLa.font = [UIFont boldSystemFontOfSize:25];
+//        _titleLa.textAlignment = NSTextAlignmentCenter;
     }
     
-    return _addreBtn;
+    return _titleBtn;
 }
+
+
+
 - (UIButton *)remarkBtn{
     
     if (!_remarkBtn) {
         
         _remarkBtn = [[UIButton alloc] init];
-        [_remarkBtn setTitle:@"添加备注" forState:UIControlStateNormal];
-        [_remarkBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [_remarkBtn setTitle:@"+ 添加备注" forState:UIControlStateNormal];
+        [_remarkBtn setTitleColor:FontColor forState:UIControlStateNormal];
         _remarkBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-        _remarkBtn.size = CGSizeMake(kScreenWidth, 15);
-        _remarkBtn.centerX = self.centerX;
         _remarkBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        _remarkBtn.y = CGRectGetMaxY(self.addreBtn.frame) + 8;
-        [_remarkBtn addTarget:self action:@selector(onRemark:) forControlEvents:UIControlEventTouchUpInside];
+        [_remarkBtn addTarget:self action:@selector(onRemarkBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _remarkBtn;
 }
 - (void)drawRect:(CGRect)rect {
     
-    UIColor *color = [UIColor colorWithHexString:@"#F76B1C"];
+    UIColor *color = [UIColor colorWithRed:1.000 green:0.795 blue:0.014 alpha:1.000];
     
     [color set];
     
@@ -110,7 +125,7 @@
     
     mPath.lineJoinStyle = kCGLineCapRound;//终点
     
-    [mPath addArcWithCenter:CGPointMake(self.centerX, self.centerY - 30) radius:95 startAngle:DEGREES_TO_RADIANS(360) endAngle:0 clockwise:YES];
+    [mPath addArcWithCenter:CGPointMake(self.centerX, self.centerY - 60) radius:95 startAngle:DEGREES_TO_RADIANS(360) endAngle:0 clockwise:YES];
     
     [mPath stroke];//边框填充
     
@@ -120,31 +135,51 @@
     
     [self addSubview:self.photoBtn];
     
-    [self addSubview:self.addreBtn];
-    
-    
     UIImageView *adreIm = [[UIImageView alloc] init];
     adreIm.image = [UIImage imageNamed:@"loufang"];
     [self addSubview:adreIm];
     
     [adreIm mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
-        make.size.mas_equalTo(CGSizeMake(30, 30));
-        make.bottom.equalTo(self.addreBtn.mas_top).offset(-8);
         
+        make.centerY.equalTo(self).offset(60);
+        make.size.mas_equalTo(CGSizeMake(20, 20));
+        make.centerX.equalTo(self);
+        
+    }];
+    
+    [self addSubview:self.titleBtn];
+    [self.titleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(adreIm.mas_bottom).offset(15);
+        make.left.mas_equalTo(self.mas_left).offset(10);
+        make.right.mas_equalTo(self.mas_right).offset(-20);
+        make.height.mas_equalTo(25);
+        make.centerX.equalTo(self);
     }];
     
     
     [self addSubview:self.remarkBtn];
     
+    [self.remarkBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(self.titleBtn.mas_bottom).offset(10);
+        make.centerX.equalTo(self);
+    }];
+    
+    
 }
 
 - (void)setLocation:(NSString *)location{
     
-    [self.addreBtn setTitle:location forState:UIControlStateNormal];
+    [self.titleBtn setTitle:location forState:UIControlStateNormal];
 }
 
+- (void)setTitle:(NSString *)title{
+    
+    [self.titleBtn setTitle:title forState:UIControlStateNormal];
+}
 
+#pragma mark - 拍照
 - (void)onPhotoBtn:(UIButton *)btn{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(photoBtn:)]) {
@@ -153,19 +188,21 @@
     }
 }
 
-- (void)onRemark:(UIButton *)btn{
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onRemarkBtn:)]) {
-        
-        [self.delegate onRemarkBtn:btn];
-    }
-}
-
-- (void)onAddress:(UIButton *)btn{
+#pragma mark - 点击选择位置
+- (void)onTitleBtn:(UIButton *)btn{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(onAddresBtn:)]) {
         
         [self.delegate onAddresBtn:btn];
+    }
+}
+
+#pragma mark - 添加备注
+- (void)onRemarkBtn:(UIButton *)btn{
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onRemarkBtn:)]) {
+        
+        [self.delegate onRemarkBtn:btn];
     }
 }
 @end

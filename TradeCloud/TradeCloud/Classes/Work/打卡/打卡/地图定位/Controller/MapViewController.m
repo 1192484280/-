@@ -80,7 +80,7 @@
     [self.view addSubview:self.headerView];
     [self.view addSubview:self.tableView];
     
-    self.locationInfo.address = @"当前位置";
+    self.locationInfo.address = @"定位中...";
     
     [self addLocation];
 }
@@ -95,7 +95,8 @@
 
 - (void)onSureBtn{
     
-    if(![self.locationInfo.address isEqualToString:@"当前位置"]){
+    if(![self.locationInfo.address isEqualToString:@"定位中..."]){
+        
         
         if (self.locationBlock != nil) {
             
@@ -212,7 +213,7 @@
     if (error == BMK_SEARCH_NO_ERROR) {
         
         BMKPoiInfo *info= [[BMKPoiInfo alloc]init];
-        info.name = @"当前位置";
+        info.name = @"定位中...";
         info.address = result.address;
         info.pt = result.location;
         

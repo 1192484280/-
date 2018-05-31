@@ -22,7 +22,7 @@
         
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 45)];
         _searchBar.placeholder = @"查询位置";
-        _searchBar.barTintColor = [UIColor orangeColor];
+        _searchBar.barTintColor = NAVBARCOLOR;
 
     }
     return _searchBar;

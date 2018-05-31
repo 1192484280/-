@@ -7,6 +7,7 @@
 //
 
 #import "WorkClockCell.h"
+#import "PunchModel.h"
 
 @implementation WorkClockCell
 
@@ -33,6 +34,14 @@
     ClassName
     return [[[NSBundle mainBundle] loadNibNamed:className owner:self options:nil] objectAtIndex:0];
 }
+
+- (void)setModel:(PunchModel *)model{
+    
+    self.timeLa.text = [model.add_time substringFromIndex:10];
+    self.yearLa.text = [model.add_time substringToIndex:10];
+    self.locationLa.text = model.location;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

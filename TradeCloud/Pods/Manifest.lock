@@ -15,14 +15,18 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - BaiduMapKit (3.4.4)
+  - BRPickerView (2.2.0)
   - FSCalendar (2.7.9)
   - IQKeyboardManager (4.0.13)
+  - JCore (1.1.9)
+  - JPush (3.0.9):
+    - JCore (~> 1.1.7)
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
-  - SVProgressHUD (2.1.2)
+  - Toast (4.0.0)
   - TZImagePickerController (1.8.9)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -32,12 +36,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - BaiduMapKit
+  - BRPickerView
   - FSCalendar
   - IQKeyboardManager
+  - JPush
   - Masonry
   - MJRefresh
   - SDWebImage
-  - SVProgressHUD
+  - Toast (~> 4.0.0)
   - TZImagePickerController
   - YYCategories
   - YYText
@@ -45,16 +51,19 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BaiduMapKit: 4ac88f5a363500760392825b69709f4a0125f81e
+  BRPickerView: 2640a8866a5f74978ee3ef643f74a048a68de915
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   IQKeyboardManager: 8eab4d8111418414619d1df8e4779ce5d0f8d7e2
+  JCore: 27598485098d0db99d2812cba048003457d08cfb
+  JPush: 003d9eaef8ba2df76de32573d0c8aa62b92b3c82
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   TZImagePickerController: b44f4cfc6d320dab9a53adcdda725099be36dcda
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 9bfddc68c662c735cd297ad7752f8624076e395f
+PODFILE CHECKSUM: a82c7ee6fcf8b2a726c9bfe9dbc98cb27c4bb1a0
 
 COCOAPODS: 1.1.1

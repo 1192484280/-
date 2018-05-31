@@ -154,7 +154,7 @@
     
     UILabel *la4 = [[UILabel alloc] init];
     la4.text = @"1";
-    la4.textColor = [UIColor orangeColor];
+    la4.textColor = NAVBARCOLOR;
     la4.font = [UIFont boldSystemFontOfSize:20];
     la4.textAlignment = NSTextAlignmentCenter;
     [self.roundView addSubview:la4];
@@ -168,7 +168,7 @@
     
     UILabel *la6 = [[UILabel alloc] init];
     la6.text = @"1";
-    la6.textColor = [UIColor orangeColor];
+    la6.textColor = NAVBARCOLOR;
     la6.font = [UIFont boldSystemFontOfSize:20];
     la6.textAlignment = NSTextAlignmentCenter;
     [self.roundView addSubview:la6];

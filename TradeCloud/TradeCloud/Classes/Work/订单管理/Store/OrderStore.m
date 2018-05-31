@@ -14,6 +14,7 @@
 
 @implementation OrderStore
 
+#pragma mark - 获取订单列表
 - (void)getListWithOrderParameterModel:(OrderParameterModel *)parameterModel Success:(void(^)(NSArray *listArr,BOOL haveMore))success Failure:(void(^)(NSError *error))failure{
     
     NSString *url = [NSString stringWithFormat:@"%@v1/order/index",IP];
@@ -202,6 +203,10 @@
         [dic setObject:parameterModel.note forKey:@"note"];
     }
     
+    if (parameterModel.attachments) {
+        
+        [dic setObject:parameterModel.attachments forKey:@"attachments"];
+    }
     
     [HttpTool postUrlWithString:url parameters:dic success:^(id responseObject) {
         
@@ -216,6 +221,7 @@
         }
     } failure:^(NSError *error) {
        
+        NSLog(@"%@",[[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
         failure(error);
     }];
     

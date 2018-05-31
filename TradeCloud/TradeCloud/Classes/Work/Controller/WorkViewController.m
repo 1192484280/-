@@ -48,7 +48,7 @@
     if (!_imgArr) {
         
         
-        _imgArr = @[@[@"icon_daka"],@[@"icon_shenhe",@"icon_huibao"],@[@"icon_gonggao",@"icon_wenjianjia"],@[@"icon_gonggao",@"icon_wenjianjia"],@[@"icon_gonggao",@"icon_wenjianjia"]];
+        _imgArr = @[@[@"icon_daka"],@[@"icon_shenhe",@"icon_huibao"],@[@"icon_gonggao",@"icon_wenjianjia"],@[@"icon_customer",@"icon_order"],@[@"icon_gongcang",@"icon_cost"]];
     }
     
     return _imgArr;
@@ -83,8 +83,9 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableHeaderView = self.headerView;
-        _tableView.sectionFooterHeight = 10;
-        _tableView.sectionHeaderHeight = 10;
+        _tableView.sectionFooterHeight = 0.5;
+        _tableView.sectionHeaderHeight = 9.5;
+        
         
     }
     
@@ -109,7 +110,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 50;
+    return 60;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -118,6 +119,7 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
     cell.textLabel.text = self.titleArr[indexPath.section][indexPath.row];
@@ -150,6 +152,7 @@
     [self.navigationController pushViewController:VC animated:YES];
 
 }
+
 
 - (void)viewWillAppear:(BOOL)animated{
     

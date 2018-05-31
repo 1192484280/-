@@ -7,7 +7,6 @@
 //
 
 #import "OrderCostAddController.h"
-#import "CGXPickerView.h"
 #import "CommonStore.h"
 #import "CommonModel.h"
 #import "CustomerStore.h"
@@ -19,6 +18,7 @@
 #import "OrderCostStore.h"
 #import "TZImagePickerController.h"
 #import "NSArray+json.h"
+#import "BRPickerView.h"
 
 @interface OrderCostAddController ()<UITextFieldDelegate,UITextViewDelegate,TZImagePickerControllerDelegate>
 
@@ -36,8 +36,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *photoView_width;
 
 @property (strong, nonatomic) OrderCostAddParameterModel *parameterModel;
-
-
 
 @property (strong, nonatomic) NSMutableArray *imgArr;
 
@@ -262,16 +260,20 @@
     
     [self.view endEditing:YES];
     
-    NSDate *now = [NSDate date];
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSString *nowStr = [fmt stringFromDate:now];
+    NSDate *minDate = [NSDate setYear:1990 month:3 day:12];
+    NSDate *maxDate = [NSDate date];
     MJWeakSelf
-    [CGXPickerView showDatePickerWithTitle:@"选择时间" DateType:UIDatePickerModeDate DefaultSelValue:nil MinDateStr:@"1900-01-01 00:00:00" MaxDateStr:nowStr IsAutoSelect:YES Manager:nil ResultBlock:^(NSString *selectValue) {
+    [BRDatePickerView showDatePickerWithTitle:@"选择日期" dateType:BRDatePickerModeYMD defaultSelValue:nil minDate:minDate maxDate:maxDate isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectValue) {
         
         weakSelf.payTime.text = selectValue;
         weakSelf.parameterModel.pay_time = selectValue;
+        
+    } cancelBlock:^{
+        
+        
     }];
+    
+    
 }
 
 #pragma mark - 选择支出类型
@@ -343,12 +345,19 @@
         return [self showMBPError:@"填写支出说明"];
     }
     
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    [self.view makeToastActivity:CSToastPositionCenter];
+    
+    
+    
     if (!(self.imgArr.count > 0)) {
         
         [self save];
         return;
         
     }
+    
+    
     //信号量实现请求完一次接口再请求一次
     NSMutableArray *imgUrlArr = [NSMutableArray array];
     
@@ -358,7 +367,7 @@
     MJWeakSelf
     for (int i =0; i<self.imgArr.count; i++) {
         
-        [SVProgressHUD show];
+        
         //任务1
         dispatch_async(quene, ^{
             
@@ -378,7 +387,7 @@
                 
             } Failure:^(NSError *error) {
                 
-                [SVProgressHUD dismiss];
+                
                 return [weakSelf showMBPError:[HttpTool handleError:error]];
             }];
             
@@ -390,11 +399,16 @@
 
 - (void)save{
     
+   
+    
     MJWeakSelf
     OrderCostStore *store = [[OrderCostStore alloc] init];
     [store addOrderCostWithParameterModel:self.parameterModel Success:^{
         
-        [SVProgressHUD dismiss];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        [weakSelf.view hideToastActivity];
+        
+        
         [weakSelf showMBPError:@"添加成功!"];
         
         if (weakSelf.block != nil) {
@@ -409,7 +423,8 @@
         
     } Failure:^(NSError *error) {
         
-        [SVProgressHUD dismiss];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        [weakSelf.view hideToastActivity];
         [weakSelf showMBPError:[HttpTool handleError:error]];
     }];
 }
@@ -455,11 +470,11 @@
         
         [self.photoView addSubview:btn];
         
-        UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(-10 , -5, 20, 20)];
+        UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(16*(i+1) + 65*i - 10 , 7.5, 20, 20)];
         [delBtn setImage:[UIImage imageNamed:@"deleBtn"] forState:UIControlStateNormal];
         delBtn.tag = 100 + i;
         [delBtn addTarget:self action:@selector(onDelBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [btn addSubview:delBtn];
+        [self.photoView addSubview:delBtn];
     }
     
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(16*(self.imgArr.count + 1) + 65*(self.imgArr.count) , 17.5, 65, 65)];

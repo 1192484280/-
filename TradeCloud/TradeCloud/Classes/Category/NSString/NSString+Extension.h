@@ -8,6 +8,7 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NSString (Extension)
 
@@ -20,5 +21,15 @@
  * md5加密
  */
 - (NSString *) md5HexDigest;
+
+/**
+ * 富文本
+ */
+-(NSAttributedString *)stringWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor *)textcolor textFont:(UIFont *)font;
+
+/**
+ * 富文本行高
+ */
+-(CGFloat)getSpaceLabelHeightwithSpeace:(CGFloat)lineSpeace withFont:(UIFont*)font withWidth:(CGFloat)width;
 
 @end

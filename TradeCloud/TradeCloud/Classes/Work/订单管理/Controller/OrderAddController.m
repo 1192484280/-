@@ -13,8 +13,9 @@
 #import "CustomerModel.h"
 #import "OrderStore.h"
 #import "OrderAddParameterModel.h"
+#import "TZImagePickerController.h"
 
-@interface OrderAddController ()<UITextViewDelegate,UITextFieldDelegate>
+@interface OrderAddController ()<UITextViewDelegate,UITextFieldDelegate,TZImagePickerControllerDelegate>
 {
     
     IBOutlet UILabel *customerLa;
@@ -25,13 +26,26 @@
     IBOutlet UILabel *stateLa;
     IBOutlet UILabel *desLa;
     IBOutlet UITextView *desTw;
+    IBOutlet UIView *photoView;
+    IBOutlet NSLayoutConstraint *photoView_width;
 }
 
 @property (strong, nonatomic) OrderAddParameterModel *parameterModel;
 
+@property (strong, nonatomic) NSMutableArray *imgArr;
+
 @end
 
 @implementation OrderAddController
+
+- (NSMutableArray *)imgArr{
+    
+    if (!_imgArr) {
+        
+        _imgArr = [NSMutableArray array];
+    }
+    return _imgArr;
+}
 
 - (OrderAddParameterModel *)parameterModel{
 
@@ -251,10 +265,69 @@
         return [self showMBPError:@"请选择状态!"];
     }
     
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    [self.view makeToastActivity:CSToastPositionCenter];
+    
+    if (!(self.imgArr.count > 0)) {
+        
+        [self save];
+        return;
+        
+    }
+    
+    
+    
+    //先上传图片，再save
+    //信号量实现请求完一次接口再请求一次
+    NSMutableArray *imgUrlArr = [NSMutableArray array];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    dispatch_queue_t quene = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    MJWeakSelf
+    for (int i =0; i<self.imgArr.count; i++) {
+        
+        
+        //任务1
+        dispatch_async(quene, ^{
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            CommonStore *store = [[CommonStore alloc] init];
+            [store upPhoto:weakSelf.imgArr[i] Success:^(NSString *imgUrl) {
+                
+                [imgUrlArr addObject:imgUrl];
+                
+                dispatch_semaphore_signal(semaphore);
+                
+                if (i == weakSelf.imgArr.count - 1) {
+                    
+                    weakSelf.parameterModel.attachments = [imgUrlArr mj_JSONString];
+                    [weakSelf save];
+                }
+                
+            } Failure:^(NSError *error) {
+                
+                
+                return [weakSelf showMBPError:[HttpTool handleError:error]];
+            }];
+            
+        });
+        
+        
+    }
+    
+    
+}
+
+- (void)save{
+    
+    
     OrderStore *store = [[OrderStore alloc] init];
     MJWeakSelf
     [store addOrderWithParameterModel:self.parameterModel Success:^{
         
+        [weakSelf.view hideToastActivity];
+        weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
         [weakSelf showMBPError:@"添加成功!"];
         
         if (weakSelf.block != nil) {
@@ -269,14 +342,72 @@
         
     } Failure:^(NSError *error) {
         
-        [HttpTool handleError:error];
+        [weakSelf.view hideToastActivity];
+        weakSelf.navigationItem.rightBarButtonItem.enabled = YES;
+        [weakSelf showMBPError:[HttpTool handleError:error]];
     }];
 }
-
 
 - (void)returnMyBlock:(myblock)block{
     
     self.block = block;
+}
+- (IBAction)onPhotoBtn:(UIButton *)sender {
+    
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    
+    // You can get the photos by block, the same as by delegate.
+    // 你可以通过block或者代理，来得到用户选择的照片.
+    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+        
+        
+        [self.imgArr addObjectsFromArray:photos];
+        
+        [self refreshPhotoViewUI];
+        
+    }];
+    
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+}
+
+- (void)refreshPhotoViewUI{
+    
+    for (UIView *view in photoView.subviews) {
+        
+        if ([view isKindOfClass:[UIButton class]]) {
+            
+            [view removeFromSuperview];
+        }
+    }
+    
+    for (int i =0 ; i< self.imgArr.count; i++) {
+        
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(16*(i+1) + 65*i , 17.5, 65, 65)];
+        [btn setImage:self.imgArr[i] forState:UIControlStateNormal];
+        
+        [photoView addSubview:btn];
+        
+        UIButton *delBtn = [[UIButton alloc] initWithFrame:CGRectMake(16*(i+1) + 65*i - 10 , 7.5, 20, 20)];
+        [delBtn setImage:[UIImage imageNamed:@"deleBtn"] forState:UIControlStateNormal];
+        delBtn.tag = 100 + i;
+        [delBtn addTarget:self action:@selector(onDelBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [photoView addSubview:delBtn];
+    }
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(16*(self.imgArr.count + 1) + 65*(self.imgArr.count) , 17.5, 65, 65)];
+    [btn setImage:[UIImage imageNamed:@"pic_add"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(onPhotoBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [photoView addSubview:btn];
+    
+    photoView_width.constant = (CGRectGetMaxX(btn.frame)) + 30;
+    
+}
+
+- (void)onDelBtn:(UIButton *)btn{
+    
+    NSInteger a = btn.tag;
+    [self.imgArr removeObjectAtIndex:a-100];
+    [self refreshPhotoViewUI];
 }
 
 - (void)didReceiveMemoryWarning {

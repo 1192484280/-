@@ -40,20 +40,10 @@
 #pragma mark - MBProgress展示错误信息
 - (void)showMBPError:(NSString *)msg{
     
-    [MBProgressHUD showError:msg toView:self.view];
+    [self.view makeToast:msg duration:2.0 position:CSToastPositionCenter];
 }
 
-#pragma mark - SVP展示错误信息
-- (void)showSVPError:(NSString *)msg{
-    
-    [SVProgressHUD showErrorWithStatus:msg];
-    [self performSelector:@selector(svpDismiss) withObject:nil afterDelay:2];
-}
 
-- (void)svpDismiss{
-    
-    [SVProgressHUD dismiss];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

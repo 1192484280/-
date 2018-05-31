@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MyApprovalViewModel;
 
 @interface MyApprovalCell : UITableViewCell
 
+@property (strong, nonatomic) MyApprovalViewModel *frameModel;
+
 + (instancetype)tempWithTableView:(UITableView *)tableView;
 
-+ (CGFloat)getHeight;
-
-+ (instancetype)Cell;
 
 @end

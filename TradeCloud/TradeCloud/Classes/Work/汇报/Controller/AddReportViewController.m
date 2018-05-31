@@ -13,18 +13,65 @@
     IBOutlet UILabel *desLa;
     IBOutlet UITextView *desTw;
 }
+
+@property (weak, nonatomic) UIButton *titleBtn;
+
 @end
 
 @implementation AddReportViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
-    [self setNavBarWithTitle:@"写汇报"];
+    [self setNavBar];
     
     desTw.delegate = self;
     
+}
+
+- (void)setNavBar{
+    
+
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [btn setTitle:@"写日报" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    btn.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    btn.width = kScreenWidth * 0.6;
+    btn.height = 30;
+    [btn addTarget:self action:@selector(onBtn:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.titleView = btn;
+    self.titleBtn = btn;
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"cladar"] style:UIBarButtonItemStylePlain target:self action:@selector(onCaldar)];
+}
+
+- (void)onBtn:(UIButton *)btn{
+    
+    MJWeakSelf
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"写日报" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [weakSelf.titleBtn setTitle:@"写日报" forState:UIControlStateNormal];
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"写汇报" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [weakSelf.titleBtn setTitle:@"写汇报" forState:UIControlStateNormal];
+        
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+
 }
 
 - (void)textViewDidChange:(UITextView *)textView{

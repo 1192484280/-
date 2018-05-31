@@ -11,6 +11,10 @@
 
 #import "WorkClockCell.h"
 
+#import "PunchClockList.h"
+#import "PunchClockParameterModel.h"
+#import "PunchStore.h"
+
 //百度地图
 //引入base相关所有的头文件
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
@@ -24,9 +28,14 @@
 //引入计算工具所有的头文件
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
 
+
 @interface OutClockController ()<UITableViewDelegate,UITableViewDataSource,OutHeaderViewDelegate,CLLocationManagerDelegate,BMKGeneralDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
+
+@property (assign, nonatomic) NSInteger page;
+
+@property (strong, nonatomic) NSMutableArray *listArr;
 
 @property (strong, nonatomic) OutHeaderView *headerView;
 
@@ -34,6 +43,9 @@
 @property (nonatomic, strong)BMKLocationService *locService;
 @property (nonatomic, strong)BMKGeoCodeSearch *geocodesearch;
 @property BOOL isGeoSearch;
+
+//添加在头部视图的tempScrollView
+@property (nonatomic, strong) UIScrollView *tempScrollView;
 
 @end
 
@@ -75,7 +87,7 @@
     
     if (!_headerView) {
         
-        _headerView = [[OutHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 380)];
+        _headerView = [[OutHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, PunchHeaderHeight)];
         _headerView.delegate = self;
         _headerView.backgroundColor = [UIColor whiteColor];
     }
@@ -90,18 +102,106 @@
         
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.tableHeaderView = self.headerView;
+        
+        //添加头部和尾部视图
+        UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth  , PunchHeaderHeight)];
+        //headerView.backgroundColor = [UIColor blueColor];
+        _tempScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth - 20, PunchHeaderHeight - 20)];
+        _tempScrollView.layer.cornerRadius = 2;
+        [headerView addSubview:_tempScrollView];
+        [_tempScrollView addSubview:self.headerView];
+        
+        _tableView.tableHeaderView = headerView;
         _tableView.backgroundColor = NormalBgColor;
-        [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        MJWeakSelf
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            
+            weakSelf.page = 1;
+            [weakSelf refresh];
+        }];
+        
+        header.lastUpdatedTimeLabel.hidden = YES;
+        _tableView.mj_header = header;
+        
+        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+        
+        [_tableView.mj_header beginRefreshing];
     }
     
     return _tableView;
 }
 
+- (void)refresh{
+    
+    PunchStore *store = [[PunchStore alloc] init];
+    
+    NSString *staff_id = [UserDefaultsTool getObjWithKey:@"staff_id"];
+    NSString *date = [[StrTool getNowTime] substringToIndex:10];
+    MJWeakSelf
+    [store getPunchlistWithStaff_id:staff_id andDate:date andPage:[NSString stringWithFormat:@"%ld",self.page] Success:^(NSArray *arr, BOOL haveMore) {
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
+        
+        
+        if (weakSelf.page == 1) {
+            
+            weakSelf.listArr = [NSMutableArray arrayWithArray:arr];
+        }else{
+            
+            [weakSelf.listArr addObjectsFromArray:arr];
+            
+        }
+        
+        if (haveMore) {
+            
+            weakSelf.tableView.mj_footer.hidden = NO;
+            
+            
+        }else{
+            
+            [weakSelf showMBPError:@"没有更多数据"];
+            weakSelf.tableView.mj_footer.hidden = YES;
+            
+        }
+        
+        [weakSelf.tableView reloadData];
+        
+    } Failure:^(NSError *error) {
+        
+        [weakSelf showMBPError:[HttpTool handleError:error]];
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
+    }];
+    
+}
+
+- (void)loadMoreData{
+    
+    self.page ++ ;
+    
+    [self refresh];
+    
+}
+
+#pragma mark -- UIScrollViewDelegate 用于控制头部视图滑动的视差效果
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offset = scrollView.contentOffset.y;
+    if (scrollView == _tableView){
+        //重新赋值，就不会有用力拖拽时的回弹
+        _tempScrollView.contentOffset = CGPointMake(_tempScrollView.contentOffset.x, 0);
+        if (offset >= 0 && offset <= PunchHeaderHeight) {
+            //因为tempScrollView是放在tableView上的，tableView向上速度为1，实际上tempScrollView的速度也是1，此处往反方向走1/2的速度，相当于tableView还是正向在走1/2，这样就形成了视觉差！
+            _tempScrollView.contentOffset = CGPointMake(_tempScrollView.contentOffset.x, - offset / 2.0f);
+        }
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 2;
+    return self.listArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -111,18 +211,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     WorkClockCell *cell = [WorkClockCell tempWithTableView:tableView];
-    
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 10;
+    return 0.5;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 10)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
     view.backgroundColor = NormalBgColor;
     return view;
 }
@@ -154,6 +254,7 @@
 - (void)didFailToLocateUserWithError:(NSError *)error{
     
     NSLog(@"地图定位失败======%@",error);
+    self.headerView.location = @"定位失败";
 }
 
 #pragma mark - 位置更新
@@ -212,6 +313,7 @@
         NSLog(@"我的位置在 %@",address1); //保存位置信息到模型
         self.headerView.location = address1;
         
+        [PunchClockList sharedInstance].parameterModel.location = address1;
     }
 }
 

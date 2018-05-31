@@ -12,7 +12,7 @@
 
 #define AlertHeight 180
 
-@interface FactoryController ()<UITableViewDelegate,UITableViewDataSource,FactoryCellDelegate>
+@interface FactoryController ()<UITableViewDelegate,UITableViewDataSource,FactoryCellDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) SearchView *searchView;
 
@@ -60,6 +60,10 @@
         _tableView.sectionFooterHeight = 9.5;
         _tableView.tableHeaderView = self.searchView;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        _tableView.emptyDataSetSource = self;
+        _tableView.emptyDataSetDelegate = self;
+        
     }
     
     return _tableView;
@@ -142,6 +146,17 @@
     
 }
 
+#pragma mark - DZNEmptyDataSetDelegate
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    return [UIImage imageNamed:@"img_null"];
+}
+
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
+   
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

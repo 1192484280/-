@@ -29,8 +29,11 @@
     UISearchBar *searchBar = [[UISearchBar alloc]initWithFrame:self.bounds];
     searchBar.placeholder = placeHoder;
     searchBar.backgroundImage = [UIImage imageNamed:@"headerbg_03"];
-    searchBar.tintColor = [UIColor orangeColor];
+    searchBar.tintColor = NAVBARCOLOR;
     searchBar.delegate = self;
+    UITextField * searchField = [searchBar valueForKey:@"_searchField"];
+//    [searchField setValue:[UIColor redColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [searchField setValue:[UIFont systemFontOfSize:15] forKeyPath:@"_placeholderLabel.font"];
     [self addSubview:searchBar];
 }
 

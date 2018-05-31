@@ -16,7 +16,7 @@
 
 - (void)drawRect:(CGRect)rect {
     
-    UIColor *color = [UIColor colorWithHexString:@"#FA8F45"];
+    UIColor *color = [UIColor colorWithRed:1.000 green:0.795 blue:0.014 alpha:1.000];
     
     [color set];
     

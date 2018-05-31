@@ -10,7 +10,7 @@
 
 @protocol WaitHandleViewControllerDelegate<NSObject>
 
-- (void)selectedCell;
+- (void)selectedCell:(BOOL)showBottomView;
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import "ReportCell.h"
 
+
 @implementation ReportCell
 
 + (instancetype)tempWithTableView:(UITableView *)tableView{
@@ -36,7 +37,21 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    //设置字间距
+    NSDictionary *dic = @{
+                          NSKernAttributeName:@5.f
+                          };
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:self.desLa.text attributes:dic];
+    
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:5];//行间距
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.desLa.text length])];
+    
+    [self.desLa setAttributedText:attributedString];
+    
+    [self.desLa sizeToFit];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

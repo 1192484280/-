@@ -22,6 +22,23 @@
 
 @implementation ApprovalTabController
 
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:YES];
+    
+    [self.navigationController setNavigationBarHidden:NO];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    [super viewWillAppear:YES];
+    
+}
+
+
 - (NSArray *)vcArr{
     
     if (!_vcArr) {
@@ -36,7 +53,7 @@
     
     if (!_titleArr) {
         
-        _titleArr = @[@"新申请",@"我申请的",@"提交"];
+        _titleArr = @[@"新申请",@"我审批的",@"我提交的"];
     }
     
     return _titleArr;

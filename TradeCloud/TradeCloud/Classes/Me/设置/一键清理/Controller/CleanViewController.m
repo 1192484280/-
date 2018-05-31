@@ -30,16 +30,18 @@
         
         return [self showMBPError:@"当前没有缓存"];
     }
+    
+    MJWeakSelf
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您将清理缓存" preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        [SVProgressHUD showWithStatus:@"正在清理"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [weakSelf showMBPError:@"正在清理"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            [self cleanFile];
+            [weakSelf cleanFile];
         });
     }]];
     [self presentViewController:alert animated:YES completion:^{
@@ -74,7 +76,7 @@
 
 -(void)clearCachSuccess
 {
-    [SVProgressHUD showSuccessWithStatus:@"清理成功"];
+    [self showMBPError:@"清理成功"];
     self.cacheLa.text = [NSString stringWithFormat:@"%.2fMB",[self readCacheSize]];
 }
 

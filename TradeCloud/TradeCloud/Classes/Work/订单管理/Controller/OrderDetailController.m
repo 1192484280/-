@@ -144,9 +144,7 @@
     
 }
 - (void)refresh{
-    
-    [SVProgressHUD show];
-    
+
     OrderStore *store = [[OrderStore alloc] init];
     
     MJWeakSelf
@@ -183,12 +181,12 @@
             weakSelf.desLa.alpha = 1;
         }
         
-        [SVProgressHUD dismiss];
+        
         
     } Failure:^(NSError *error) {
         
         [weakSelf showMBPError:[HttpTool handleError:error]];
-        [SVProgressHUD dismiss];
+        
     }];
 }
 

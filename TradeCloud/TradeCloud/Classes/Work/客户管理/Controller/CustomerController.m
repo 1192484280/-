@@ -15,7 +15,7 @@
 
 #define AlertHeight 180
 
-@interface CustomerController ()<UITableViewDelegate,UITableViewDataSource,SearchViewDelegate>
+@interface CustomerController ()<UITableViewDelegate,UITableViewDataSource,SearchViewDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) SearchView *searchView;
 
@@ -103,13 +103,20 @@
         _tableView.sectionHeaderHeight = 0.5;
         _tableView.sectionFooterHeight = 9.5;
         
-        MJWeakSelf 
-        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-           
+        _tableView.emptyDataSetSource = self;
+        _tableView.emptyDataSetDelegate = self;
+        
+        MJWeakSelf
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            
             weakSelf.page = 1;
             [weakSelf refresh];
         }];
         
+        header.lastUpdatedTimeLabel.hidden = YES;
+        _tableView.mj_header = header;
+
+
         _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
         
     }
@@ -181,19 +188,35 @@
                 
                 return [self showMBPError:@"您没有权限删除此订单!"];
             }
-            MJWeakSelf
-            [store deleteCustomerWithId:model.customer_id success:^{
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您将删除此客户" preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alert addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 
-                [weakSelf showMBPError:@"删除成功！"];
+                MJWeakSelf
+                [store deleteCustomerWithId:model.customer_id success:^{
+                    
+                    [weakSelf showMBPError:@"删除成功！"];
+                    
+                    [weakSelf.listArr removeObjectAtIndex:indexPath.section];
+                    [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
+                    [weakSelf refresh];
+                    
+                } failure:^(NSError *error) {
+                    
+                    [self showMBPError:[HttpTool handleError:error]];
+                }];
                 
-                [weakSelf.listArr removeObjectAtIndex:indexPath.section];
-                [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
-                [weakSelf refresh];
+            }]];
+            
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
-            } failure:^(NSError *error) {
+            }]];
+            
+            [self presentViewController:alert animated:YES completion:^{
                 
-                [self showMBPError:[HttpTool handleError:error]];
             }];
+
             
         }
     }
@@ -205,8 +228,6 @@
 }
 
 - (void)refresh{
-    
-    [SVProgressHUD show];
     
     CustomerStore *store = [[CustomerStore alloc] init];
     
@@ -232,14 +253,14 @@
             }
         }
         [weakSelf.tableView reloadData];
-        [SVProgressHUD dismiss];
+        
         
     } failure:^(NSError *error) {
         
         [weakSelf showMBPError:[HttpTool handleError:error]];
         [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf.tableView.mj_footer endRefreshing];
-        [SVProgressHUD dismiss];
+        
     }];
 }
 
@@ -254,6 +275,18 @@
     
     self.page = 1;
     self.customer_name = title;
+    [self refresh];
+}
+
+#pragma mark - DZNEmptyDataSetDelegate
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    return [UIImage imageNamed:@"img_null"];
+}
+
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
     [self refresh];
 }
 - (void)didReceiveMemoryWarning {

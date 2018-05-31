@@ -33,12 +33,12 @@
         _titleFont = [UIFont systemFontOfSize:FSCalendarStandardTitleTextSize];
         _subtitleFont = [UIFont systemFontOfSize:FSCalendarStandardSubtitleTextSize];
         _weekdayFont = [UIFont systemFontOfSize:FSCalendarStandardWeekdayTextSize];
-        _headerTitleFont = [UIFont boldSystemFontOfSize:17];
+        _headerTitleFont = [UIFont systemFontOfSize:FSCalendarStandardHeaderTextSize];
         
-        _headerTitleColor = [UIColor whiteColor];
+        _headerTitleColor = FSCalendarStandardTitleTextColor;
         _headerDateFormat = @"MMMM yyyy";
         _headerMinimumDissolvedAlpha = 0.2;
-        _weekdayTextColor = [UIColor whiteColor];
+        _weekdayTextColor = FSCalendarStandardTitleTextColor;
         _caseOptions = FSCalendarCaseOptionsHeaderUsesDefaultCase|FSCalendarCaseOptionsWeekdayUsesDefaultCase;
         
         _backgroundColors = [NSMutableDictionary dictionaryWithCapacity:5];

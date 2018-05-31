@@ -72,7 +72,7 @@
         
         
         MJWeakSelf
-        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
@@ -81,6 +81,9 @@
             
             [weakSelf.tableView reloadData];
         }];
+        
+        header.lastUpdatedTimeLabel.hidden = YES;
+        _tableView.mj_header = header;
         
         
         [_tableView addSubview:self.sdView];
@@ -156,7 +159,7 @@
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
     [btn setTitle:@"添加+" forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [btn setTitleColor:NAVBARCOLOR forState:UIControlStateNormal];
     btn.backgroundColor = [UIColor whiteColor];
     return btn;
 }

@@ -98,7 +98,7 @@
     
     [self addSubview:self.detailSearchBtn];
     
-    [self addSubview:self.exportBtn];
+    //[self addSubview:self.exportBtn];
     
 }
 

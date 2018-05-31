@@ -50,7 +50,7 @@
                                                 <constraint firstAttribute="width" constant="100" id="twh-r9-CZX"/>
                                             </constraints>
                                             <state key="normal" title="客户">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onCustomerBtn:" destination="-1" eventType="touchUpInside" id="o0h-4X-b2Y"/>
@@ -82,7 +82,7 @@
                                                 <constraint firstAttribute="width" constant="100" id="bgq-qW-zLI"/>
                                             </constraints>
                                             <state key="normal" title="款号">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onSectionNumBtn:" destination="-1" eventType="touchUpInside" id="S5A-EU-1Xm"/>
@@ -113,7 +113,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="ghG-Gv-s7E"/>
                                             </constraints>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -159,7 +159,7 @@
                                                 <constraint firstAttribute="width" constant="100" id="cEb-HY-zRh"/>
                                             </constraints>
                                             <state key="normal" title="付款方式">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onPayTypeBtn:" destination="-1" eventType="touchUpInside" id="1Ie-dp-ZYI"/>
@@ -200,7 +200,7 @@
                                                 <constraint firstAttribute="width" constant="100" id="5IM-Ly-pAD"/>
                                             </constraints>
                                             <state key="normal" title="支出时间">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onTimeBtn:" destination="-1" eventType="touchUpInside" id="X2W-2k-PKK"/>
@@ -234,7 +234,7 @@
                                                 <constraint firstAttribute="width" constant="100" id="dan-uW-0hp"/>
                                             </constraints>
                                             <state key="normal" title="支出类型">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onTypeBtn:" destination="-1" eventType="touchUpInside" id="SjZ-Qw-ldG"/>
@@ -276,6 +276,7 @@
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uSJ-Ys-LrO">
                                             <rect key="frame" x="16" y="8" width="343" height="112"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -305,6 +306,7 @@
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mYm-BF-in6">
                                             <rect key="frame" x="16" y="8" width="343" height="112"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>

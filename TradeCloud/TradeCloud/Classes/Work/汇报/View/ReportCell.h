@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ReportCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *desLa;
 
 + (instancetype)tempWithTableView:(UITableView *)tableView;
 

@@ -19,15 +19,24 @@ pod 'YYCategories'
 pod 'IQKeyboardManager'
 
 pod 'AFNetworking', '~> 3.0'
-pod 'SVProgressHUD'
 
 #图片多选
 pod 'TZImagePickerController'
 
-#下拉日历
-pod 'FSCalendar'
 
 #百度地图
 pod 'BaiduMapKit'
+
+#时间选择器
+pod 'BRPickerView'
+
+#极光推送
+pod 'JPush'
+
+#提示框
+pod 'Toast', '~> 4.0.0'
+
+#下拉日历
+pod 'FSCalendar'
 
 end

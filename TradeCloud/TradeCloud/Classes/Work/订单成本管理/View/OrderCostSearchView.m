@@ -24,7 +24,7 @@
     if (!_total) {
         
         _total = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.searchBar.frame) + 8, kScreenWidth , 28)];
-        _total.textColor = [UIColor orangeColor];
+        _total.textColor = NAVBARCOLOR;
         _total.font = [UIFont boldSystemFontOfSize:15];
         _total.textAlignment = NSTextAlignmentCenter;
     }
@@ -112,7 +112,7 @@
     
     [self addSubview:self.detailSearchBtn];
     
-    [self addSubview:self.exportBtn];
+    //[self addSubview:self.exportBtn];
     
 }
 

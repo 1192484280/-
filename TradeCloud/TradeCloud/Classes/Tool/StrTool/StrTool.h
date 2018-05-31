@@ -20,4 +20,13 @@
  */
 + (NSString *)getNowTime;
 
+
+/**
+ * 获取时间差
+ */
+//+ (NSString *) compareCurrentTime:(NSString *)str;
+
+//计算上班打卡距上次打卡时间差
++ (BOOL) compareCurrentTime:(NSString *)str;
+
 @end

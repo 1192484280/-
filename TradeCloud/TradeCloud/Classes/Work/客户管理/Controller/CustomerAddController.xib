@@ -63,12 +63,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cC-h7-3cw">
                     <rect key="frame" x="0.0" y="168" width="375" height="128"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S4U-E4-gLZ">
-                            <rect key="frame" x="0.0" y="8" width="375" height="112"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  请输入客户描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtr-po-pIQ">
                             <rect key="frame" x="10" y="8" width="115.5" height="30"/>
                             <constraints>
@@ -78,15 +72,20 @@
                             <color key="textColor" red="0.78808718919754028" green="0.78791451454162598" blue="0.80853986740112305" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S4U-E4-gLZ">
+                            <rect key="frame" x="16" y="8" width="343" height="112"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Gtr-po-pIQ" firstAttribute="top" secondItem="5cC-h7-3cw" secondAttribute="top" constant="8" id="QBn-Xm-URc"/>
-                        <constraint firstItem="S4U-E4-gLZ" firstAttribute="leading" secondItem="5cC-h7-3cw" secondAttribute="leading" id="QXb-F2-Wjl"/>
+                        <constraint firstItem="S4U-E4-gLZ" firstAttribute="leading" secondItem="5cC-h7-3cw" secondAttribute="leading" constant="16" id="QXb-F2-Wjl"/>
                         <constraint firstAttribute="height" constant="128" id="V6a-by-eBp"/>
                         <constraint firstItem="Gtr-po-pIQ" firstAttribute="leading" secondItem="5cC-h7-3cw" secondAttribute="leading" constant="10" id="WPX-MN-YGR"/>
                         <constraint firstItem="S4U-E4-gLZ" firstAttribute="top" secondItem="5cC-h7-3cw" secondAttribute="top" constant="8" id="XzT-ba-AB5"/>
-                        <constraint firstAttribute="trailing" secondItem="S4U-E4-gLZ" secondAttribute="trailing" id="e4D-nV-mbl"/>
+                        <constraint firstAttribute="trailing" secondItem="S4U-E4-gLZ" secondAttribute="trailing" constant="16" id="e4D-nV-mbl"/>
                         <constraint firstAttribute="bottom" secondItem="S4U-E4-gLZ" secondAttribute="bottom" constant="8" id="s8F-Ko-x0Y"/>
                     </constraints>
                 </view>

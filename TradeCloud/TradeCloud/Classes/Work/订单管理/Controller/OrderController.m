@@ -13,17 +13,17 @@
 #import "SearchDetailView.h"
 #import "OrderDetailController.h"
 #import "OrderStore.h"
-#import "CGXPickerView.h"
 #import "CustomerStore.h"
 #import "CustomerModel.h"
 #import "CommonStore.h"
 #import "CommonModel.h"
 #import "OrderList.h"
+#import "BRPickerView.h"
 
 #define AlertHeight 180
 #define SearchDetailHeight 338
 
-@interface OrderController ()<UITableViewDelegate,UITableViewDataSource, OrderSearchViewDelegate, SearchDetailViewDelegate>
+@interface OrderController ()<UITableViewDelegate,UITableViewDataSource, OrderSearchViewDelegate, SearchDetailViewDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) OrderSearchView *searchView;
 
@@ -103,13 +103,19 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableHeaderView = self.searchView;
         
+        _tableView.emptyDataSetSource = self;
+        _tableView.emptyDataSetDelegate = self;
+        
         MJWeakSelf
-        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             
             [OrderList sharedInstance].parameterModel.page = 1;
             [weakSelf refresh];
-            
         }];
+        
+        header.lastUpdatedTimeLabel.hidden = YES;
+        _tableView.mj_header = header;
+    
         
         _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
         
@@ -184,19 +190,33 @@
                 return [self showMBPError:@"您没有权限删除此订单!"];
             }
             
-            OrderStore *store = [[OrderStore alloc] init];
-            MJWeakSelf
-            [store deleteOrderWithId:model.order_id Success:^{
-                
-                [weakSelf showMBPError:@"删除成功!"];
-                [weakSelf.listArr removeObjectAtIndex:indexPath.section];
-                [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
-                [weakSelf refresh];
-            } Failure:^(NSError *error) {
-                
-                [self showMBPError:[HttpTool handleError:error]];
-            }];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您将删除此订单" preferredStyle:UIAlertControllerStyleAlert];
             
+            [alert addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                
+                OrderStore *store = [[OrderStore alloc] init];
+                MJWeakSelf
+                [store deleteOrderWithId:model.order_id Success:^{
+                    
+                    [weakSelf showMBPError:@"删除成功!"];
+                    [weakSelf.listArr removeObjectAtIndex:indexPath.section];
+                    [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
+                    [weakSelf refresh];
+                } Failure:^(NSError *error) {
+                    
+                    [self showMBPError:[HttpTool handleError:error]];
+                }];
+                
+            }]];
+            
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }]];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                
+            }];
+
         }
     }
 }
@@ -213,8 +233,6 @@
 }
 
 - (void)refresh{
-    
-    [SVProgressHUD show];
     
     OrderStore *store = [[OrderStore alloc] init];
     
@@ -241,14 +259,14 @@
         }
         [weakSelf.tableView reloadData];
         
-        [SVProgressHUD dismiss];
+        
         
     } Failure:^(NSError *error) {
         
         [weakSelf showMBPError:[HttpTool handleError:error]];
         [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf.tableView.mj_footer endRefreshing];
-        [SVProgressHUD dismiss];
+        
     }];
     
 }
@@ -363,32 +381,37 @@
 #pragma mark - 开始日期
 - (void)onStartDateBtn:(UIButton *)btn{
     
-    NSDate *now = [NSDate date];
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSString *nowStr = [fmt stringFromDate:now];
+    NSDate *minDate = [NSDate setYear:1990 month:3 day:12];
+    NSDate *maxDate = [NSDate date];
     
-    [CGXPickerView showDatePickerWithTitle:@"选择时间" DateType:UIDatePickerModeDate DefaultSelValue:nil MinDateStr:@"1900-01-01 00:00:00" MaxDateStr:nowStr IsAutoSelect:YES Manager:nil ResultBlock:^(NSString *selectValue) {
+    [BRDatePickerView showDatePickerWithTitle:@"选择日期" dateType:BRDatePickerModeYMD defaultSelValue:nil minDate:minDate maxDate:maxDate isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectValue) {
         
         [btn setTitle:selectValue forState:UIControlStateNormal];
         
-        [OrderList sharedInstance].parameterModel.start_time = selectValue;
+        [OrderList sharedInstance].parameterModel.end_time = selectValue;
+        
+    } cancelBlock:^{
+        
+        
     }];
+    
 }
 
 #pragma mark - 结束日期
 - (void)onEndDateBtn:(UIButton *)btn{
     
-    NSDate *now = [NSDate date];
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSString *nowStr = [fmt stringFromDate:now];
+    NSDate *minDate = [NSDate setYear:1990 month:3 day:12];
+    NSDate *maxDate = [NSDate date];
     
-    [CGXPickerView showDatePickerWithTitle:@"选择时间" DateType:UIDatePickerModeDate DefaultSelValue:nil MinDateStr:@"1900-01-01 00:00:00" MaxDateStr:nowStr IsAutoSelect:YES Manager:nil ResultBlock:^(NSString *selectValue) {
+    [BRDatePickerView showDatePickerWithTitle:@"选择日期" dateType:BRDatePickerModeYMD defaultSelValue:nil minDate:minDate maxDate:maxDate isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectValue) {
         
         [btn setTitle:selectValue forState:UIControlStateNormal];
         
         [OrderList sharedInstance].parameterModel.end_time = selectValue;
+        
+    } cancelBlock:^{
+        
+        
     }];
 }
 
@@ -527,10 +550,25 @@
 
 - (void)ClickSearchBtn:(NSString *)title{
     
+    [OrderList sharedInstance].parameterModel = [[OrderParameterModel alloc] init];
+    [OrderList sharedInstance].parameterModel.num = @"6";
+    [OrderList sharedInstance].parameterModel.staff_id = [UserDefaultsTool getObjWithKey:@"staff_id"];
     [OrderList sharedInstance].parameterModel.page = 1;
     
     [OrderList sharedInstance].parameterModel.section_number = title;
     
+    [self refresh];
+}
+
+#pragma mark - DZNEmptyDataSetDelegate
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    return [UIImage imageNamed:@"img_null"];
+}
+
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
     [self refresh];
 }
 - (void)didReceiveMemoryWarning {

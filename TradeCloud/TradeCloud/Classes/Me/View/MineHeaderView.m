@@ -25,6 +25,7 @@
     
     if (self = [super initWithFrame:frame]) {
         
+        self.backgroundColor = NAVBARCOLOR;
         [self setUI];
     }
     return self;
@@ -75,6 +76,7 @@
     emailLa.textAlignment = NSTextAlignmentLeft;
     [self addSubview:emailLa];
     self.emailLa = emailLa;
+    
     
     UILabel *companyLa = [[UILabel alloc] init];
     companyLa.text = @"优捷思科技（大连）";

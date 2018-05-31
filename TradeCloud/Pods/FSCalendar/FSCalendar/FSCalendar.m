@@ -1373,7 +1373,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
             headerView.calendar = self;
             headerView.scrollEnabled = _scrollEnabled;
             [_contentView addSubview:headerView];
-            headerView.backgroundColor = [UIColor orangeColor];
             self.calendarHeaderView = headerView;
             
         }
@@ -1382,7 +1381,6 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
             FSCalendarWeekdayView *calendarWeekdayView = [[FSCalendarWeekdayView alloc] initWithFrame:CGRectZero];
             calendarWeekdayView.calendar = self;
             [_contentView addSubview:calendarWeekdayView];
-            calendarWeekdayView.backgroundColor = [UIColor orangeColor];
             _calendarWeekdayView = calendarWeekdayView;
         }
         

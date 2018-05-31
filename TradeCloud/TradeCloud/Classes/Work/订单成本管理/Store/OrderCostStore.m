@@ -44,9 +44,14 @@
     }
     
     if (parameterModel.pay_type_id) {
+        
         [dic setObject:parameterModel.pay_type_id forKey:@"pay_type_id"];
     }
     
+    if (parameterModel.staff_id) {
+        
+        [dic setObject:parameterModel.staff_id forKey:@"staff_id"];
+    }
     
     [HttpTool getUrlWithString:url parameters:dic success:^(id responseObject) {
         
@@ -168,6 +173,7 @@
         
     } failure:^(NSError *error) {
        
+        NSLog(@"%@",[[NSString alloc] initWithData:error.userInfo[@"com.alamofire.serialization.response.error.data"] encoding:NSUTF8StringEncoding]);
         failure(error);
     }];
     
